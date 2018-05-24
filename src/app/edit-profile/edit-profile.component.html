@@ -1,0 +1,127 @@
+
+<div *ngFor="let user of Userdetails">
+<div class="top-head">
+	<div class="container-fluid">
+		<div class="col-xs-4">
+			<div class="drake">
+					<a [routerLink]="['/edit-profile/']">
+						<div *ngFor="let img of UserProfileImage_url; let i = index">
+									<div *ngIf="img.url==undefined;else avtar">
+											<img src="assets/john.jpg" class="img-circle">
+									</div>
+									<ng-template #avtar>
+											<img src="{{img.url}}" class="img-circle">
+									</ng-template>
+						 </div>
+				 </a>		
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="small-icon hidden-xs">
+				<a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+			</div>
+			<div class="small-icon visible-xs">
+				<a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="small-icon chat hidden-xs">
+				  <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+			</div>
+			<div class="small-icon chat visible-xs">
+				  <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+			</div>
+		</div>
+	</div>
+</div>
+		<div class="pos-pro">
+		<div class="profile">
+			<div class="container">
+					<div class="top-btn">
+							<div class="col-md-12">
+								<a [routerLink]="['/profile/']" class="btn btn-custom6"> Edit Profile</a>
+							</div>	
+					</div>
+			<div class="col-sm-2 col-md-2 col-lg-4"></div>
+				<div class="col-sm-8 col-md-8 col-lg-4">
+					<div class="card">
+						<carousel>
+						  <slide *ngFor="let image of UserProfileImage">
+							<img src="{{image}}" class="img-responsive">
+						  </slide>
+						</carousel>
+						<h2>{{user.name}}, {{user.age}}</h2>
+						<h5>{{user.distance}} kms away</h5>
+						<h3>i am {{user.username1}}. i live in {{user.homeTown}}</h3>
+					</div>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-4"></div>
+			</div>
+		</div>	
+		</div>
+
+		<form #settingProfileForm="ngForm" (ngSubmit)="saveSettingProfile(settingProfileForm.value)">
+			<section class="discovery">
+				<div class="container">
+					<div class="col-sm-1 col-md-1 col-lg-3"></div>
+						<div class="col-sm-10 col-md-10 col-lg-6">
+							<h2> Discovery settings</h2>
+								<div class="inner-wrap">
+									<h3>Distance(in kms)</h3>
+									<mat-slider thumbLabel tickInterval="1" min="2" max="1000" value="{{searchDistance}}" name="searchDistance" [(ngModel)]="searchDistance"></mat-slider>
+									<div class="aim-slider">
+										<h3><span class="text-left">Age</span><span class="text-right">{{aimrange[0]}} - {{aimrange[1]}}</span></h3>
+										<nouislider [connect]="true" [min]="18" [max]="50" [step]="1" [(ngModel)]="someRange" name="someRange" (ngModelChange)="onChange($event)"></nouislider>
+									</div>
+									<div class="gender">
+										<h3>Gender</h3>
+										<div class="inner-gender">	
+											<div class="col-xs-6">
+												<h4>Male</h4>
+											</div>	
+											<div class="col-xs-6">
+												<mat-slide-toggle color="warn" [(ngModel)]="male" name="male" ></mat-slide-toggle>
+											</div>	
+										</div>
+										<div class="inner-gender">	
+											<div class="col-xs-6">
+												<h4>Female</h4>
+											</div>	
+											<div class="col-xs-6">
+												<mat-slide-toggle color="warn" [(ngModel)]="female" name="female" ></mat-slide-toggle>
+											</div>	
+										</div>
+									</div>
+								</div>
+						</div>
+					<div class="col-sm-1 col-md-1 col-lg-3"></div>
+				</div>	
+			</section>
+			
+			<section class="custom-buttons">
+				<div class="container">
+						<div class="col-sm-1 col-md-3 col-lg-3"></div>
+							<div class="col-sm-10 col-md-6 col-lg-6">
+								<button  type="submit" class="btn btn-custom4">Save Settings</button>
+							</div>	
+						<div class="col-sm-1 col-md-3 col-lg-3"></div>
+				</div>
+				<div class="container">
+						<div class="col-sm-1 col-md-3 col-lg-3"></div>
+							<div class="col-sm-10 col-md-6 col-lg-6">
+								<button type="button" class="btn btn-custom4" (click)="LogoutProfile()">Logout</button>
+							</div>	
+						<div class="col-sm-1 col-md-3 col-lg-3"></div>
+				</div>	
+				<div class="container">
+						<div class="col-sm-1 col-md-3 col-lg-3"></div>
+							<div class="col-sm-10 col-md-6 col-lg-6">
+								<button type="button" class="btn btn-custom5">Deactivate</button>
+							</div>	
+						<div class="col-sm-1 col-md-3 col-lg-3"></div>
+				</div>					
+			</section>
+		</form>
+
+
+		</div>

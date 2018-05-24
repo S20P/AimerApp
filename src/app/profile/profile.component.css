@@ -1,0 +1,141 @@
+.top-head {
+	 float:left;
+	 width:100%;
+	 text-align:center;
+	 background:#ef5858;
+	 padding:0px;
+}
+.small-icon span {
+	color: #fff;
+    font-size: 80px;
+    padding-top: 20px;	 
+}
+.top-head .img-circle  {
+	border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+	margin-top: 10px;
+}
+.chat img {
+	  margin-top:10px;
+}
+
+
+
+.image-wrap{
+	position: relative;
+    top: 0;
+    max-width: 350px;
+    margin: 20px auto;
+	float:left;
+	width:100%
+}
+.image-wrap button{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    background: #ef5858;
+    border: 0px;
+    color: #fff;
+    padding: 10px 14px 10px 16px;
+    font-size: 20px;
+    border-radius: 50%;
+	
+}
+
+
+.image-wrap img{
+	width: 100%;
+    height: auto;
+}
+
+.upload-container{
+	max-width:500px;
+	margin: 0 auto;
+	float:none;
+	width:100%;
+}
+.modal-content {
+	padding:25px;
+}
+.profil-modal .btn1{
+	font-size:18px;
+	background:#ef5858;
+	color:#fff;
+	transition: all 0.3s ease-in-out 0s;
+	border:2px solid #ef5858;
+}
+.profil-modal .btn1:hover{
+	background:transparent;
+	color:#ef5858;
+	border:2px solid #ef5858;
+}
+.profil-modal .btn2{
+	font-size:18px;
+	background:#000;
+	color:#fff;
+	transition: all 0.3s ease-in-out 0s;
+	border:2px solid #000;
+}
+.profil-modal .btn2:hover{
+	background:transparent;
+	color:#000;
+	border:2px solid #000;
+}
+.profile-about {
+    max-width: 500px;
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+	padding:30px 0px;
+} 
+.profile-about .btn3{
+    background: #ef5858;
+    font-size: 18px;
+    color: #fff;
+    padding: 1px 30px;
+    margin-top: 15px;
+	border:2px solid #ef5858;
+	transition: all 0.3s ease-in-out 0s;
+} 
+.profile-about .btn3:hover{
+    background:transparent;
+    color:#ef5858;
+} 
+button.btn.btn-success.btn-block.btn4{
+    background: #28a745;
+    font-size: 18px;
+    color: #fff;
+    padding: 2px 30px;
+    margin-top: 5px;
+	border:2px solid #28a745;
+	transition: all 0.3s ease-in-out 0s;
+} 
+button.btn.btn-success.btn-block.btn4:hover{
+    background:transparent;
+    color:#28a745;
+} 
+.profile-about label {
+	font-size: 24px;
+    font-weight: 400;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px){
+.top-head .img-circle  {
+    width: 55px;
+    height: 55px;
+	margin-top: 5px;
+} 
+.small-icon span {
+	color: #fff;
+    font-size: 50px;
+    padding-top: 5px;	 
+}
+.image-wrap button{
+	bottom: 2px;
+	right: 2px;
+	padding: 5px 8px 5px 10px;
+	font-size: 13px;	
+}
+}

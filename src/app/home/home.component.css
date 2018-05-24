@@ -1,0 +1,131 @@
+.home-wrap{
+	padding: 35px 0 0 0;
+}
+.headings{
+	text-align:center;
+	padding-top:80px;
+}
+.headings h1{
+	font-size:80px;
+	font-weight:600;
+}
+.logo{
+	text-align:center;
+}
+.headings h2{
+	font-size:40px;
+}
+.login-btn .btn-custom{	
+    background: #2d5a94;
+    color: #fff;
+	width:100%;
+	border:2px solid #2d5a94;
+    padding: 10px 0px;
+    font-size: 22px;
+    border-radius: 35px;
+	 -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+		transition: all 0.3s ease-in-out 0s;
+}
+.login-btn .btn-custom:hover{	
+    background:#ef5858;
+    color:#fff;
+	border:2px solid #ef5858;
+}
+.home-wrap{
+	background: url('../../assets/background.jpg') center no-repeat;
+	background-size:cover;
+	padding:40px 40px 560px 40px;
+}
+.bottom-text{
+	text-align:center;
+	padding:20px 0;
+}
+.bottom-text a{
+	color:#000;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out 0s;
+}
+.bottom-text a:hover{
+	color:#ef5858;
+}
+.bottom-text h2{
+	font-size:28px;
+}
+.copy p{
+	font-size:18px;
+}
+.copy {
+	float:left;
+	width:100%;
+	padding-top:20px;
+}
+
+
+
+@media only screen and (min-width: 0px) and (max-width: 576px){
+.headings h1{
+	font-size:50px;
+}	
+.headings h2{
+	font-size:24px;
+}	
+.login-btn .btn-custom{	
+    font-size: 14px;
+	margin: 15px 0;
+}
+.headings{
+	padding-top:30px;
+}
+.home-wrap{
+	padding:40px 0px 200px 0px;
+}
+.bottom-text h2{
+	font-size:24px;
+}
+.copy p{
+	font-size:12px;
+}
+}	
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+.headings h1{
+	font-size:50px;
+}	
+.headings h2{
+	font-size:24px;
+}	
+.login-btn .btn-custom{	
+    font-size: 14px;
+	margin: 0px;
+}
+.headings{
+	padding-top:30px;
+}
+.home-wrap{
+	padding:40px 0px 325px 0px;
+}
+.bottom-text h2{
+	font-size:15px;
+	font-weight:600;
+}
+.copy p{
+	font-size:12px;
+}		
+}
+
+
+@media only screen and (min-width: 1280px){
+.home-wrap{
+	padding:40px 40px 360px 40px;
+}	
+	
+}
+@media only screen and (min-width: 1680px){
+.home-wrap{
+	padding:40px 40px 560px 40px;
+}	
+	
+}
+	

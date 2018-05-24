@@ -1,0 +1,70 @@
+<div class="top-head">
+	<div class="container-fluid">
+		<div class="col-xs-4">
+			<div class="drake">
+					<a [routerLink]="['/edit-profile/']">
+						<div *ngFor="let img of UserProfileImage_url; let i = index">
+									<div *ngIf="img.url==undefined;else avtar">
+											<img src="assets/john.jpg" class="img-circle">
+									</div>
+									<ng-template #avtar>
+											<img src="{{img.url}}" class="img-circle">
+									</ng-template>
+						 </div>
+				 </a>		
+
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="small-icon hidden-xs">
+				<a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+			</div>
+			<div class="small-icon visible-xs">
+				<a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="small-icon chat hidden-xs">
+				  <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+			</div>
+			<div class="small-icon chat visible-xs">
+				  <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="daily-limit">
+	<div class="container">
+		<div class="col-sm-12 col-md-1 col-lg-3"></div>
+			<div class="col-sm-12 col-md-10 col-lg-6">
+				<div class="limit-wrap">
+					<h2>You have reached your likes / pass limit</h2>
+					<h3>Wait 11 hrs 05 minutes 36 seconds</h3>
+					<h4>Upgrade to Plus Account</h4>
+						<div class="limit-slider">
+						<carousel>
+						  <slide>
+							<img src="assets/limit-buttons.png" alt="First slide">
+						  </slide>
+						  <slide>
+							<img src="assets/limit-buttons.png" alt="Second slide">
+						  </slide>
+						  <slide>
+							<img src="assets/limit-buttons.png" alt="Third slide">
+						  </slide>
+						</carousel>
+						</div>
+						<div class="daily-button">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-custom7 btn-lg">Continue</button>
+							</div>
+							<div class="col-md-12">
+								<button type="button" class="btn btn-custom8 btn-lg">No, I want to be a basic user.</button>
+							</div>	
+						</div>
+				</div>
+			</div>
+		<div class="col-sm-12 col-md-1 col-lg-3"></div>		
+	</div>
+</section>

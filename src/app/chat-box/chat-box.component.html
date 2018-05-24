@@ -1,0 +1,87 @@
+<div class="top-head">
+	<div class="container-fluid">
+		<div class="col-xs-4">
+			<div class="drake">
+					<a [routerLink]="['/edit-profile/']">
+						<div *ngFor="let img of UserProfileImage_url; let i = index">
+									<div *ngIf="img.url==undefined;else avtar">
+											<img src="assets/john.jpg" class="img-circle">
+									</div>
+									<ng-template #avtar>
+											<img src="{{img.url}}" class="img-circle">
+									</ng-template>
+						 </div>
+				 </a>	
+
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="small-icon hidden-xs">
+				<a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+			</div>
+			<div class="small-icon visible-xs">
+				<a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="small-icon chat hidden-xs">
+				 <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+			</div>
+			<div class="small-icon chat visible-xs">
+				  <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="chat-tabs">
+	<div class="container">
+	
+		<div class="col-sm-1 col-md-1"></div>
+		<div class="col-sm-10 col-md-10">
+				<div *ngFor="let data of connection_result">
+			<div class="list-group">
+
+						<a  class="list-group-item" (click)="gotochat(data._id)">
+							<div class="col-xs-4">
+								<img src="{{data.targetImage}}" width="127px" class="img-responsive rounded-circle">
+							</div>
+							<div class="col-xs-6">
+								<h2>{{data.targetName}}</h2>
+							</div>
+							<div class="col-xs-2">
+                                 <div *ngIf="data.unreadMsgCount > 0">
+								 <span class="aim-badge">&nbsp;</span>
+								</div>
+							</div>
+						  </a>
+						</div>
+			
+			  <!-- <a [routerLink]="['/chat/']" class="list-group-item">
+				<div class="col-xs-4">
+					<img src="assets/chat-img2.png" class="img-responsive">
+				</div>
+				<div class="col-xs-6">
+					<h2>Vanessa</h2>
+				</div>
+				<div class="col-xs-2">
+					
+				</div>
+			  </a>
+			  <a [routerLink]="['/chat/']" class="list-group-item">
+				<div class="col-xs-4">
+					<img src="assets/chat-img3.png" class="img-responsive">
+				</div>
+				<div class="col-xs-6">
+					<h2>Ella</h2>
+				</div>
+				<div class="col-xs-2">
+					
+				</div>
+			  </a> -->
+			</div>
+		</div>
+		<div class="col-sm-1 col-md-1"></div>
+	
+	</div>
+</section>

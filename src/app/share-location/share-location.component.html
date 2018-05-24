@@ -1,0 +1,27 @@
+		
+		
+		<section class="location">
+			<div class="container">
+				<div class="logo hidden-xs">
+					<a [routerLink]="['//']"><img src="assets/logo.png"></a>
+				</div>
+				<div class="logo visible-xs">
+					<a [routerLink]="['//']"><<img src="assets/sm-logo.png"></a>
+				</div>
+				<h1>Share your Location <br>with AimerApp</h1>
+				<div class="share-btn">
+				<div class="col-xs-1 col-sm-2 col-md-4"></div>
+					<div class="col-xs-10 col-sm-8 col-md-4">
+						<button (click)="openModal(template)" type="button" class="btn btn-custom1 btn-lg">Share</button>
+					</div>	
+				<div class="col-xs-1 col-sm-2 col-md-4"></div>	
+				</div>
+				<ng-template #template>
+				  <div class="modal-body text-center confirm-modal">
+					<p>Do you want to confirm?</p>
+					<button type="button" class="btn btn-custom2" (click)="confirm()" >Yes</button>
+					<button type="button" class="btn btn-custom3" (click)="decline()" >No</button>
+				  </div>
+				</ng-template>
+			</div>
+		</section>

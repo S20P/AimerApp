@@ -1,0 +1,441 @@
+
+    <div class="top-head">
+      <div class="container-fluid">
+        <div class="col-xs-4">
+          <div class="drake">
+              <!-- <a [routerLink]="['/edit-profile/']">
+                <div>
+                      <div>
+                          <img src="assets/john.jpg" class="img-circle">
+                      </div>
+                 </div>
+             </a>		 -->
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="small-icon hidden-xs">
+            <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+          </div>
+          <div class="small-icon visible-xs">
+            <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <!-- <div class="small-icon chat hidden-xs">
+              <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+          </div>
+          <div class="small-icon chat visible-xs">
+              <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    
+        <form #setupProfileForm="ngForm" (ngSubmit)="saveProfile()">
+          <section class="discovery">
+            <div class="container">
+              <div class="col-sm-1 col-md-1 col-lg-3"></div>
+                <div class="col-sm-10 col-md-10 col-lg-6">
+                  <h1 class="signup_title"> Signup </h1>
+                  <fieldset>
+                  <div class="inner-wrap">
+                    
+ <!-- username1  -->
+                   <div class="form-group"  [ngClass]="{
+                    'has-danger': username1.invalid && (username1.dirty || username1.touched),
+                    'has-success': username1.valid && (username1.dirty || username1.touched)}">
+
+                      <label for="username1"><h3>Username</h3> </label>
+                      <input type="text"
+                             class="form-control" 
+                             id="username1" 
+                             name="username1"  
+                             [(ngModel)]="model.username1"
+                             required
+                             #username1="ngModel" 
+                             placeholder="Enter Your Username">
+
+                      <div class="form-control-throw"
+                        *ngIf="username1.errors && (username1.dirty || username1.touched)">
+                      <p *ngIf="username1.errors.required" class="text-danger-throw">Username name is required</p>
+                      </div>
+
+                    </div>
+
+ <!-- end username1  -->  
+
+ <!-- handleName  -->
+                   <div class="form-group" [ngClass]="{
+                    'has-danger': handleName.invalid && (handleName.dirty || handleName.touched),
+                    'has-success': handleName.valid && (handleName.dirty || handleName.touched)}"
+                    >
+                      <label for="handleName"><h3>HandleName</h3></label>
+                      <input type="text" 
+                             class="form-control" 
+                             id="handleName" 
+                             name="handleName" 
+                             [(ngModel)]="model.handleName"
+                             required
+                             #handleName="ngModel" 
+                             placeholder="Enter Your HandleName">
+                    
+                     <div class="form-control-throw"
+                        *ngIf="handleName.errors && (handleName.dirty || handleName.touched)">
+                      <p *ngIf="handleName.errors.required" class="text-danger-throw">HandleName name is required</p>
+                      </div>
+                             
+                   </div>
+<!--end  handleName  -->
+
+<!-- gender  -->
+                   <div class="gender">
+                      <h3>Gender</h3>
+                      <div class="inner-gender">	
+                        <div class="col-xs-6">
+                          <h4>Male</h4>
+                        </div>	
+                        <div class="col-xs-6">
+                          <mat-slide-toggle color="warn" [(ngModel)]="male" name="male" (ngModelChange)="onChange_male($event)" ngModel></mat-slide-toggle>
+                        </div>	
+                      </div>
+                      <div class="inner-gender">	
+                        <div class="col-xs-6">
+                          <h4>Female</h4>
+                        </div>	
+                        <div class="col-xs-6">
+                          <mat-slide-toggle color="warn" [(ngModel)]="female" name="female" (ngModelChange)="onChange_female($event)" ngModel></mat-slide-toggle>
+                        </div>	
+                      </div>
+                    </div>
+<!--end gender  -->
+
+
+<!-- age  -->
+                    <div class="form-group" [ngClass]="{
+                      'has-danger': age.invalid && (age.dirty || age.touched),
+                      'has-success': age.valid && (age.dirty || age.touched)}">
+                        <label for="age"><h3>Age</h3></label>
+                        <input type="number"
+                               class="form-control" 
+                               id="age" 
+                               name="age" 
+                               [(ngModel)]="model.age"
+                               required
+                               #age="ngModel"
+                               placeholder="Enter Your Age">
+                          <div class="form-control-throw"
+                           *ngIf="age.errors && (age.dirty || age.touched)">
+                           <p *ngIf="age.errors.required" class="text-danger-throw">Age is required</p>
+                         </div>       
+                     </div>
+ <!--end age  --> 
+ 
+
+ <!-- userAboutMe  -->
+                    <div class="form-group"  [ngClass]="{
+                      'has-danger': userAboutMe.invalid && (userAboutMe.dirty || userAboutMe.touched),
+                      'has-success': userAboutMe.valid && (userAboutMe.dirty || userAboutMe.touched)}">
+                        <label for="userAboutMe"><h3>About User</h3></label>
+                        <textarea class="form-control" 
+                                  rows="2" 
+                                  id="userAboutMe" 
+                                  name="userAboutMe" 
+                                  [(ngModel)]="model.userAboutMe"
+                                  required
+                                  #userAboutMe="ngModel"
+                                  placeholder="Enter About User">
+                         </textarea>
+                         <div class="form-control-throw"
+                         *ngIf="userAboutMe.errors && (userAboutMe.dirty || userAboutMe.touched)">
+                         <p *ngIf="userAboutMe.errors.required" class="text-danger-throw">User About is required</p>
+                       </div> 
+                     </div>
+ <!--end  userAboutMe  -->
+
+  <!-- relationshipStatus  -->
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': relationshipStatus.invalid && (relationshipStatus.dirty || relationshipStatus.touched),
+                      'has-success': relationshipStatus.valid && (relationshipStatus.dirty || relationshipStatus.touched)}">
+                      
+                      <label for="relationshipStatus"><h3>Relationship Status</h3></label>
+                        <select class="form-control"
+                          id="relationshipStatus" 
+                          name="relationshipStatus" 
+                          [(ngModel)]="model.relationshipStatus"
+                          required
+                          #relationshipStatus="ngModel">
+                           <option disabled value="">Select Relationship status</option>
+                           <option *ngFor="let item of relationshipStatus_list" value="{{item}}">{{item}}</option>
+                        </select>
+                       
+                        <div class="form-control-throw"
+                        *ngIf="relationshipStatus.errors && (relationshipStatus.dirty || relationshipStatus.touched)">
+                        <p *ngIf="relationshipStatus.errors.required" class="text-danger-throw">Relationship status is required</p>
+                      </div> 
+                     </div>
+  <!-- end relationshipStatus  -->
+
+  <!-- language  -->
+
+                     <div class="form-group" [ngClass]="{
+                            'has-danger': language.invalid && (language.dirty || language.touched),
+                            'has-success': language.valid && (language.dirty || language.touched)}">
+
+                        <label for="language"><h3>Language</h3></label>
+                        <select class="form-control"  
+                                id="language" 
+                                name="language"
+                                [(ngModel)]="model.language"
+                                required
+                                #language="ngModel">
+                           <option disabled value="">Select Language </option>
+                           <option *ngFor="let item of language_list" value="{{item}}">{{item}}</option>
+                        </select>
+
+                        <div class="form-control-throw"
+                        *ngIf="language.errors && (language.dirty || language.touched)">
+                        <p *ngIf="language.errors.required" class="text-danger-throw">language is required</p>
+                      </div> 
+                     </div>
+  <!--end  language  -->
+
+
+  <!-- userInterests  -->
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': userInterests.invalid && (userInterests.dirty || userInterests.touched),
+                      'has-success': userInterests.valid && (userInterests.dirty || userInterests.touched)}"> 
+                        <label for="userInterests"><h3>Interests</h3></label>
+                        <input type="text" 
+                              class="form-control" 
+                              id="userInterests" 
+                              name="userInterests" 
+                              [(ngModel)]="model.userInterests"
+                              required
+                              #userInterests="ngModel"
+                              placeholder="Enter Your Interests">
+
+                        <div class="form-control-throw"
+                          *ngIf="userInterests.errors && (userInterests.dirty || userInterests.touched)">
+                          <p *ngIf="userInterests.errors.required" class="text-danger-throw">User Interests is required</p>
+                        </div>       
+                     </div>
+
+  <!--end userInterests  -->
+
+  <!-- religion  -->
+
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': religion.invalid && (religion.dirty || religion.touched),
+                      'has-success': religion.valid && (religion.dirty || religion.touched)}">
+
+                        <label for="religion"><h3>Religion</h3></label>
+                        <select class="form-control" 
+                                id="religion" 
+                                name="religion"
+                                [(ngModel)]="model.religion"
+                                required
+                                #religion="ngModel"
+                                >
+                           <option disabled value="">Select religion </option>
+                           <option *ngFor="let item of religion_list" value="{{item}}">{{item}}</option>
+                        </select>
+
+                        <div class="form-control-throw"
+                        *ngIf="religion.errors && (religion.dirty || religion.touched)">
+                        <p *ngIf="religion.errors.required" class="text-danger-throw">religion is required</p>
+                      </div>  
+                     </div>
+
+  <!--end religion  -->
+
+
+  <!-- pets  -->
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': pets.invalid && (pets.dirty || pets.touched),
+                      'has-success': pets.valid && (pets.dirty || pets.touched)}">
+
+                        <label for="pets"><h3>Pets</h3></label>
+                        <select class="form-control" 
+                                id="pets" 
+                                name="pets"
+                                [(ngModel)]="model.pets"
+                                required
+                                #pets="ngModel">
+                           <option disabled value="">Select pets </option>
+                           <option *ngFor="let item of pets_list" value="{{item}}">{{item}}</option>
+                        </select>
+
+                        <div class="form-control-throw"
+                        *ngIf="pets.errors && (pets.dirty || pets.touched)">
+                        <p *ngIf="pets.errors.required" class="text-danger-throw">pets is required</p>
+                      </div>
+                     </div>
+<!--end pets  -->
+
+
+<!-- personality  -->
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': personality.invalid && (personality.dirty || personality.touched),
+                      'has-success': personality.valid && (personality.dirty || personality.touched)}">
+
+                        <label for="userAboutMe"><h3>Personality</h3></label>
+                        <select class="form-control" 
+                                id="personality" 
+                                name="personality"  
+                                [(ngModel)]="model.personality"
+                                required
+                                #personality="ngModel">
+                           <option disabled value="">Select personality </option>
+                           <option *ngFor="let item of personality_list" value="{{item}}">{{item}}</option>
+                        </select>
+
+                        <div class="form-control-throw"
+                        *ngIf="personality.errors && (personality.dirty || personality.touched)">
+                        <p *ngIf="personality.errors.required" class="text-danger-throw">personality is required</p>
+                      </div>
+                     </div>
+<!--end personality  -->
+                     
+
+<!-- children  -->
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': children.invalid && (children.dirty || children.touched),
+                      'has-success': children.valid && (children.dirty || children.touched)}">
+
+                        <label for="children"><h3>Children</h3></label>
+                        <select class="form-control" 
+                                id="children" 
+                                name="children"  
+                                [(ngModel)]="model.children"
+                                required
+                                #children="ngModel">
+                           <option disabled value="">Select children </option>
+                           <option *ngFor="let item of children_list" value="{{item}}">{{item}}</option>
+                        </select>
+
+                        <div class="form-control-throw"
+                        *ngIf="children.errors && (children.dirty || children.touched)">
+                        <p *ngIf="children.errors.required" class="text-danger-throw">children is required</p>
+                      </div>
+                     </div>
+<!--end  children  -->
+
+<!-- education  -->                     
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': education.invalid && (education.dirty || education.touched),
+                      'has-success': education.valid && (education.dirty || education.touched)}">
+
+                        <label for="education"><h3>Education</h3></label>
+                        <select class="form-control" 
+                                      id="education" 
+                                      name="education" 
+                                      [(ngModel)]="model.education"
+                                      required
+                                      #education="ngModel">
+                           <option disabled value="">Select education </option>
+                           <option *ngFor="let item of education_list" value="{{item}}">{{item}}</option>
+                        </select>
+
+                        <div class="form-control-throw"
+                        *ngIf="education.errors && (education.dirty || education.touched)">
+                        <p *ngIf="education.errors.required" class="text-danger-throw">education is required</p>
+                      </div>
+                     </div>
+<!--end education  --> 
+
+<!-- profession  -->                     
+                     <div class="form-group" [ngClass]="{
+                      'has-danger': profession.invalid && (profession.dirty || profession.touched),
+                      'has-success': profession.valid && (profession.dirty || profession.touched)}">
+
+                        <label for="profession"><h3>Profession</h3></label>
+                        <select class="form-control" 
+                                id="profession" 
+                                name="profession"  
+                                [(ngModel)]="model.profession"
+                                required
+                                #profession="ngModel">
+                           <option disabled value="">Select profession </option>
+                           <option *ngFor="let item of profession_list" value="{{item}}">{{item}}</option>
+                        </select>
+
+                        <div class="form-control-throw"
+                        *ngIf="profession.errors && (profession.dirty || profession.touched)">
+                        <p *ngIf="profession.errors.required" class="text-danger-throw">profession is required</p>
+                      </div>
+                     </div>
+<!-- end profession  -->                     
+
+                  </div>
+
+                  
+                   <div class="inner-wrap">
+
+  <!-- searchDistance  -->    
+                    
+                      <h3>Distance(in kms)</h3>
+                      <mat-slider 
+                          thumbLabel 
+                          tickInterval="1" 
+                          min="2" max="1000" 
+                          name="searchDistance" 
+                          [(ngModel)]="searchDistance"
+                      ></mat-slider>
+                   
+  <!--end searchDistance  -->
+
+  <!-- searchMinMax  -->
+                      <div class="aim-slider">
+                        <h3><span class="text-left">Age</span><span class="text-right">{{aimrange[0]}} - {{aimrange[1]}}</span></h3>
+                        <nouislider [connect]="true" [min]="18" [max]="50" [step]="1" [(ngModel)]="searchMinMax" name="searchMinMax" (ngModelChange)="onChange($event)" ngModel></nouislider>
+                      </div>
+   <!--end searchMinMax  -->
+                      
+   <!-- searchInterestedIn  -->
+                      <div class="gender">
+                          <h3>Interested In</h3>
+                          <div class="inner-gender">	
+                            <div class="col-xs-6">
+                              <h4>Male</h4>
+                            </div>	
+                            <div class="col-xs-6">
+                              <mat-slide-toggle color="warn" [(ngModel)]="searchInterestedIn_male" name="searchInterestedIn_male" ngModel></mat-slide-toggle>
+                            </div>	
+                          </div>
+                          <div class="inner-gender">	
+                            <div class="col-xs-6">
+                              <h4>Female</h4>
+                            </div>	
+                            <div class="col-xs-6">
+                              <mat-slide-toggle color="warn" [(ngModel)]="searchInterestedIn_female" name="searchInterestedIn_female" ngModel></mat-slide-toggle>
+                            </div>	
+                          </div>
+                        </div>
+   <!--end searchInterestedIn  -->
+
+              </div>
+
+             
+                  </fieldset>
+                 <div class="custom-buttons signup_save_btn"> 
+                  <button  type="submit" class="btn btn-custom4" [disabled]="setupProfileForm.invalid">Save</button>
+                 </div>
+
+                  <!-- <section class="custom-buttons">
+                      <div class="container">
+                          <div class="col-sm-1 col-md-3 col-lg-3"></div>
+                            <div class="col-sm-10 col-md-6 col-lg-6">
+                            </div>	
+                          <div class="col-sm-1 col-md-3 col-lg-3"></div>
+                      </div>
+                           
+                    </section> -->
+                </div>
+              <div class="col-sm-1 col-md-1 col-lg-3"></div>
+            </div>	
+          </section>
+          
+        
+        </form>
+    
+      
