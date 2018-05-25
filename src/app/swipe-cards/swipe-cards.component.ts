@@ -151,8 +151,8 @@ export class SwipeCardsComponent{
    searchByCurrent() {
     let self = this;
     const accuracy = { enableHighAccuracy: true }; 
-
-    self.currentlocationApi.getLocation(accuracy).subscribe( function(position) 
+    let options = {timeout: 100, enableHighAccuracy: true, maximumAge: 3600};
+    self.currentlocationApi.getLocation(options).subscribe( function(position) 
     {
     self.currentLocation = position; 
     console.log("current_location",self.currentLocation);

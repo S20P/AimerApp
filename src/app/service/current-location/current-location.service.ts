@@ -21,7 +21,8 @@ export class CurrentLocationService {
 
   public getLocation(geoLocationOptions?: any): Observable<any> {
     
-    geoLocationOptions = geoLocationOptions || { timeout: 5000 };
+    // geoLocationOptions = geoLocationOptions || { timeout: 5000 };
+    geoLocationOptions = geoLocationOptions;
 
         return Observable.create(observer => {
 
