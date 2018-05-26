@@ -143,16 +143,16 @@ export class SwipeCardsComponent{
     this.current_token = usercheck.token;
    // let userimage = usermember.userImage;
     //this.UserProfileImage_url = userimage[0];
-
+  
     this.searchByCurrent();
-    
+   
    }
 
    searchByCurrent() {
     let self = this;
     const accuracy = { enableHighAccuracy: true }; 
-    let options = {timeout: 100, enableHighAccuracy: true, maximumAge: 3600};
-    self.currentlocationApi.getLocation(options).subscribe( function(position) 
+    //let options = {timeout: 100, enableHighAccuracy: true, maximumAge: 3600};
+    self.currentlocationApi.getLocation(accuracy).subscribe( function(position) 
     {
     self.currentLocation = position; 
     console.log("current_location",self.currentLocation);

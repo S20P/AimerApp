@@ -20,15 +20,19 @@ export class CurrentLocationService {
   }
 
   public getLocation(geoLocationOptions?: any): Observable<any> {
+
+
+  
     
-    // geoLocationOptions = geoLocationOptions || { timeout: 5000 };
-    geoLocationOptions = geoLocationOptions;
+     geoLocationOptions = geoLocationOptions || { timeout: 5000 };
+     geoLocationOptions = geoLocationOptions;
 
         return Observable.create(observer => {
 
           if (window.navigator && window.navigator.geolocation) {
             window.navigator.geolocation.getCurrentPosition(
               (position) => {
+                console.log("position",position);
                 observer.next(position);
                 observer.complete();
               },
