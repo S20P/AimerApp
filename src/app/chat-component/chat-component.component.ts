@@ -3,6 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MemberService } from '../service/member/member.service';
 import { ConnectionService } from '../service/connection/connection.service';
+import { ProfileService } from '../service/profile/profile.service';
+import * as io from 'socket.io-client';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-chat-component',
@@ -15,91 +19,130 @@ export class ChatComponentComponent implements OnInit {
   btnText: string = 'Send';
   goalText: string ;
   goals = [];
-  current_token;
   UserProfileImage_url = [];
   connection_result = [];
   message_result = [];
   to;
   from;
-  token = "EAAHqWDZAUh7QBAPDseC2gBIKXEbNOpReaiCPqbqzLZCUDbgt7XdznNsMBGyzR58bhfFgjCUc33LD31p2KQ59v7UjnXSZAc0ZCNJvrBYfO8dZACmIORO02RRStrfqRZAbcOhCPu0k2n2FjaFpZAZAWtaG2zq6EYiINqrXGfup9y8Wh7PfxvY8b3a7RmxkVve8j19EchnIgSfllAZDZD";
+  private url = 'https://aimerappsocket.herokuapp.com/';
+  private socket;
+  mesage_dynamic;
+  dataRefresher: any;
+  sender;
+  liveMessage = [];
+  _id;
+  livemsg;
+  constructor( private router: Router,
+    private MemberApi:MemberService, 
+    private ConnectionApi:ConnectionService,
+    private ProfileApi:ProfileService,
+    private http: HttpClient
+    
+  ) { 
+    var connection = {
+      "force new connection": true,
+      "reconnectionAttempts": "Infinity",
+      "timeout": 10000,
+      "transports": ["websocket"]
+    };
+    this.livemsg=false;
+    this.socket = io.connect(this.url, connection);
+
+    console.log("socket", this.socket);
+    
+    this._id = localStorage.getItem("_id");
+    console.log("_id....",this._id);
+     this.getconnectionData();
+    
+    //this.getMessages_live();
   
-  constructor( private router: Router,private MemberApi:MemberService, private ConnectionApi:ConnectionService,) { }
+  }
 
   ngOnInit() {
     this.itemCount = this.goals.length;
-    let usercheck = JSON.parse(localStorage.getItem("usercheck"));
-    let usermember = JSON.parse(localStorage.getItem("usermember"));
-
-    if(usercheck.userlogin=="false"){
-      this.router.navigate([' ']);
-    }
    
-    this.current_token = usercheck.token;
-    //let userimage = usermember.userImage;
-    //this.UserProfileImage_url = userimage[0];
-
+    //this.refreshData();
   this.chatId = localStorage.getItem("chatId");
-  this.getmemberData();
-  this.getconnectionData(this.token);
+  this.getProfileData();
+ // this.getconnectionData();
   this.getMessages(this.chatId);
 
-
+ this.getMessages_live();
+ console.log(" liveMessage", this.liveMessage);
 //   this.ConnectionApi.getMessagesio(this.chatId).subscribe((data: string) => {
 //     console.log("msg-data",data);
 //  });
 
-
-
-
-
   }
 
 
-
-
-
-  getmemberData() {
+  getProfileData() {
     this.UserProfileImage_url = [];
-    this.MemberApi.getmember().subscribe(res => {
-    // console.log("member-data",res);
-     let oldUser = res['oldUser'];
+    this.ProfileApi.getProfileData().subscribe(res => {
+   
      let status = res['status'];
-
-     if(oldUser==false&&status==true){
-       this.router.navigate(['create-profile']);
-     }
-     else{
-      if(oldUser==true){
+    
+      if(status==true){
         let userdata = res['user'];
+        this._id = userdata._id;
         let userimage = userdata.userImage;
         for(var i=0; i<1;i++){
           this.UserProfileImage_url.push({url:userimage[i]});
        }
 
       }
-     }
+     
      });
  }
 
- getconnectionData(token) {
+ getconnectionData() {
 
   this.connection_result  = [];
- this.ConnectionApi.getconnection(token).subscribe(res => {
+ this.ConnectionApi.getconnection().subscribe(res => {
  // console.log("connection-data",res);
 
   let conn_data = res['connection'];
 
   for(var c=0;c<conn_data.length;c++){
     if(conn_data[c]._id==this.chatId){
-      this.connection_result.push({
-        "targetName":conn_data[c].targetName,
-        "targetImage":conn_data[c].targetImage,
-        "_id":conn_data[c]._id,
-        "targetId":conn_data[c].senderId,
-     });
+
+
+      if(conn_data[c].targetId==this._id){
+        this.connection_result.push({
+          "targetName": conn_data[c].senderName,
+          "targetImage": conn_data[c].senderImage,
+          "_id": conn_data[c]._id,
+          "unreadMsgCount": conn_data[c].unreadMsgCount,
+          "targetId":conn_data[c].senderId,
+        });
+
+        this.to = conn_data[c].targetId;
+        this.from = conn_data[c].senderId;
+        this.sender = conn_data[c].targetId;
+
+      }else{
+        this.connection_result.push({
+        
+          "targetName": conn_data[c].targetName,
+          "targetImage": conn_data[c].targetImage,
+          "_id": conn_data[c]._id,
+          "unreadMsgCount": conn_data[c].unreadMsgCount,
+          "targetId":conn_data[c].targetId,
+        });
+
+        this.to = conn_data[c].senderId;
+        this.from = conn_data[c].targetId;
+        this.sender = conn_data[c].senderId;
+
+      }
+
+          this.to = conn_data[c].senderId;
+          this.from = conn_data[c].targetId;
+
+     
  
-     this.to = conn_data[c].targetId;
-     this.from = conn_data[c].senderId;
+           this.socket.emit('adduser',this.sender);
+  
 
      this.ConnectionApi.adduser(conn_data[c].senderId).subscribe((data: string) => {
           console.log("user is connected",data);
@@ -115,10 +158,90 @@ console.log("connection-array", this.connection_result);
 
 }   
 
+getMessages_live(){
+
+  // let mss =  Observable.create((observer) => {
+  //   this.socket.on("message", function (data) {
+  //     console.log("socket_msg----",data);
+  //     this.refresh();
+  //  });
+  // });
+
+  this.socket.on('message', (data) => {
+    console.log("socket_msg----",data);
+    let time = new Date();
+            let msg_time = time.getTime();
+            console.log("msg_time",msg_time);
+             let text = data['text'];
+             let from = data['from'];
+            
+             this.livemsg=true;
+             
+           // this.mesage_dynamic ="text";
+         // this.getMessages(this.chatId);
+
+        this.message_result.push({
+              "text":text,
+              "senderId":from,
+              "time":msg_time
+        });
+
+      
+    });
 
 
-getMessages(chatId){
 
+
+//  console.log("dataddsfsd",mssss);
+
+  //  this.socket.on("message", function (data) {
+  //   console.log("socket_msg----",data);
+  //         let time = new Date();
+  //         let msg_time = time.getTime();
+  //         console.log("msg_time",msg_time);
+  //          let text = data['text'];
+  //          let from = data['from'];
+  //        // this.mesage_dynamic ="text";
+  //        //this.refresh();
+  //     let arr = [];  
+  //     arr.push({
+  //           "text":text,
+  //           "senderId":from,
+  //           "time":msg_time
+  //     });
+          
+  //  });
+  
+  // this.refresh();
+  // console.log(" liveMessage", this.liveMessage);
+
+    // let res =  this.ConnectionApi.getMessages_live();
+    // console.log("Live-messge",res);
+//   subscribe(res => {
+//         console.log("Live-messge",res);
+//         let msg_data = res;
+// //console.log("-------------");
+ 
+//   let msg_length = msg_data['length'];
+
+//   for(var m=0;m<msg_length;m++){
+    
+//       let create_date = msg_data[m]._created_at;
+//       let time = new Date(create_date);
+//       let msg_time = time.getTime();
+      
+//       this.message_result.push({
+//         "text":msg_data[m].text,
+//         "senderId":msg_data[m].senderId,
+//         "time":msg_time
+//      });
+    
+//    } 
+//   });
+}
+
+getMessages(chatId): void{
+  
 this.message_result = [];
 
  this.ConnectionApi.getMessages(chatId).subscribe(res => {
@@ -127,10 +250,7 @@ this.message_result = [];
   let msg_data = res;
 //console.log("-------------");
  
-
   let msg_length = msg_data['length'];
-
-
 
   for(var m=0;m<msg_length;m++){
     if(msg_data[m].connection==this.chatId){
@@ -156,15 +276,12 @@ this.message_result = [];
 
 
   addItem() {
-
-  
   //  console.log("send-text",this.goalText);
       
     let data = {"connectionId":this.chatId,"text":this.goalText};
     this.ConnectionApi.sendMessage(data).subscribe(res => {
     //  console.log("send-text-data",res);
     });
-
 
     let paramdata = {"connectionId":this.chatId,"text":this.goalText};
 
@@ -173,10 +290,24 @@ this.message_result = [];
       "to": this.to,
       "from":  this.from ,
     };
+    let time1 = new Date();
+    let msg_time1 = time1.getTime();
+    this.message_result.push({
+      "text":this.goalText,
+      "senderId":this.from,
+      "time":msg_time1
+});
     
+
+this.ConnectionApi.getMessages(this.chatId).subscribe(res => {
+  console.log("message-data",res);});
+
     this.ConnectionApi.addmessgae(sendmsgdata).subscribe((data: string) => {
       console.log("message is sent",data);
     });
+
+
+
 
     let time = new Date();
     let msg_time = time.getTime();
@@ -184,5 +315,22 @@ this.message_result = [];
     this.goals.push({"text":this.goalText,"time":msg_time});
     this.goalText = '';
     this.itemCount = this.goals.length;
+
   }
+
+  refresh(){
+  setInterval(() => {
+    //this.getMessages(this.chatId);
+    //Passing the false flag would prevent page reset to 1 and hinder user interaction
+  }, 1)
+  }
+  // refreshData(){
+  //   this.dataRefresher =
+  //     setInterval(() => {
+  //       this.getMessages(this.chatId);
+  //       //Passing the false flag would prevent page reset to 1 and hinder user interaction
+  //     }, 3000);  
+  // }
+ 
+
 }

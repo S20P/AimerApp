@@ -20,6 +20,7 @@ import {
   import { DiscoverCardsService } from '../service/discover-cards/discover-cards.service';
   import { LikeService } from '../service/like/like.service';
   import { CurrentLocationService } from '../service/current-location/current-location.service';
+  import { ProfileService } from '../service/profile/profile.service';
 
 
 @Component({
@@ -33,8 +34,7 @@ export class SwipeCardsComponent{
   UserProfileImage :any = [];
 
   DiscoverCard_userdata :any = [];
-  
-  current_token;
+    
   UserProfileImage_url = [];
 
 	aimcard = true;
@@ -97,6 +97,8 @@ export class SwipeCardsComponent{
               private LikeApi:LikeService,
               private ref: ChangeDetectorRef,
               private currentlocationApi:CurrentLocationService,
+              private ProfileApi:ProfileService,
+              
   ) {
 	
     this.stackConfig = {
@@ -129,18 +131,10 @@ export class SwipeCardsComponent{
     
   
     console.log("card",this.cards);
-    this.getmemberData();
+    this.getProfileData();
     this.aimcard = true;
 	  this.aimfullcard = false;
    
-    let usercheck = JSON.parse(localStorage.getItem("usercheck"));
-    let usermember = JSON.parse(localStorage.getItem("usermember"));
-
-    if(usercheck.userlogin=="false"){
-      this.router.navigate([' ']);
-    }
-
-    this.current_token = usercheck.token;
    // let userimage = usermember.userImage;
     //this.UserProfileImage_url = userimage[0];
   
@@ -173,28 +167,27 @@ export class SwipeCardsComponent{
   }
 
 
-   getmemberData() {
+   getProfileData() {
 
-    this.MemberApi.getmember().subscribe(res => {
-     console.log("member-data",res);
-     let oldUser = res['oldUser'];
-     let status = res['status'];
-
-     if(oldUser==false&&status==true){
-       this.router.navigate(['create-profile']);
-     }
-     else{
-      if(oldUser==true){
+    //get profile API
+     this.ProfileApi.getProfileData().subscribe(res => {
+      console.log("user profile is.",res);
+      let status1 = res['status'];
+      if(status1==true){
         let userdata = res['user'];
         let userimage = userdata.userImage;
-       
+        let _id = userdata._id;
+        localStorage.setItem("_id",_id);
         for(var i=0; i<1;i++){
           this.UserProfileImage_url.push({url:userimage[i]});
        }
-
       }
-     }
+      else{
+        this.router.navigate(['setup-profile']);
+      }
      });
+  //get profile API *end
+
  }
   
     openModal(template: TemplateRef<any>) {

@@ -479,6 +479,13 @@ saveProfile(){
       this.ProfileApi.createUserProfile(form_submited_data).subscribe(res => {
         console.log("User Profile created  Successfull ..",res);
         this.setupProfileForm.reset();
+        let status1 = res['status'];
+        if(status1==true){
+        this.router.navigate(['swipe-cards']);
+        }else{
+       this.router.navigate(['setup-profile']);
+        }
+        
        });
         
   }

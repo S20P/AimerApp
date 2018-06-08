@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MemberService } from '../service/member/member.service';
 import { ConnectionService } from '../service/connection/connection.service';
+import { ProfileService } from '../service/profile/profile.service';
 
 
 import { AuthService } from 'angularx-social-login';
@@ -17,16 +18,16 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit {
 
   user: SocialUser;
-  token = "EAAHqWDZAUh7QBAPDseC2gBIKXEbNOpReaiCPqbqzLZCUDbgt7XdznNsMBGyzR58bhfFgjCUc33LD31p2KQ59v7UjnXSZAc0ZCNJvrBYfO8dZACmIORO02RRStrfqRZAbcOhCPu0k2n2FjaFpZAZAWtaG2zq6EYiINqrXGfup9y8Wh7PfxvY8b3a7RmxkVve8j19EchnIgSfllAZDZD";
   fb_authToken;
   constructor(private MemberApi:MemberService,
                private ConnectionApi:ConnectionService,
                private authService: AuthService,
-               private router: Router
+               private router: Router,
+               private ProfileApi:ProfileService,
              ) {   }
 
   ngOnInit() {
-    
+   
    // this.getmemberData(token);
     //this.getconnectionData(this.token);
 
@@ -57,10 +58,15 @@ export class HomeComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       console.log("user-data1",user);
       if(user){
+        
       this.user = user;
       this.fb_authToken = this.user['authToken'];
-      localStorage.setItem("fb_authToken", this.fb_authToken);
-      this.getmemberData();
+      var token = this.user['authToken'];
+    //  let fbData = {
+    //      Fb_details:user
+    //  };
+     // localStorage.setItem("fb_authToken",fbData);
+      this.getmemberData(token);
       }
     });
 
@@ -75,30 +81,63 @@ export class HomeComponent implements OnInit {
 
 
   //member api call
-  getmemberData() {
+  getmemberData(token) {
     console.log("data");
-        this.MemberApi.getmember().subscribe(res => {
+
+    //Check member API 
+        this.MemberApi.getmember(token).subscribe(res => {
          console.log("member-data",res);
          let oldUser = res['oldUser'];
          let status = res['status'];
  
          if(oldUser==false&&status==true){
-           console.log("info",res['info']);
-           localStorage.setItem("userlogedis", "false");
-           this.router.navigate(['setup-profile']);
+
+           // register API
+           this.MemberApi.registerMember(this.user,token).subscribe(res => {
+              console.log("Member register API data",res);
+
+              if(res['setupProfileComplete']==true&&res['status']==true){
+
+                   let AppToken = res['token'];
+                  console.log("APP-Token",AppToken);
+                  localStorage.setItem("AccessAppToken",AppToken);
+
+               //get profile API
+                  this.ProfileApi.getProfileData().subscribe(res => {
+                    console.log("user profile is.",res);
+                    let status1 = res['status'];
+                    if(status1==true){
+                      this.router.navigate(['swipe-cards']);
+                    }
+                    else{
+                      this.router.navigate(['setup-profile']);
+                    }
+                   });
+                //get profile API *end
+
+              }
+              else{
+                this.router.navigate([' ']);
+              }
+           });
+          //register API *end
+
          }
          else{
            console.log("Already Member",res['info']);
            console.log("olduser is..",oldUser);
- 
-           let myObj = { userlogin: 'true', token: res['token'] };
-           let userdata = res['user'];
-           localStorage.setItem("usercheck", JSON.stringify(myObj));
-           localStorage.setItem("usermember", JSON.stringify(userdata));
+
+           let AppToken = res['token'];
+           console.log("APP-Token",AppToken);
+           localStorage.setItem("AccessAppToken",AppToken);
+        
            this.router.navigate(['swipe-cards']);
          }
  
          });
+         //member API *end
+
+
      }
 
 

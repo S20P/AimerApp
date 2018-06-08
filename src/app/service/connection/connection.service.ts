@@ -5,17 +5,15 @@ import * as io from 'socket.io-client';
 @Injectable()
 export class ConnectionService {
 
-  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWJlNDE1OGUwMWMyZDAwZDhiYjQxNjEiLCJmYWNlYm9va0lkIjoiMTI0NzAxNDIwNTM1MjI5NyIsInVzZXJuYW1lIjoiTmloYWwgRGVzYWkiLCJleHAiOjE1Mjc1NDk0NzYuMjE2LCJpYXQiOjE1MjY0Njk0NzZ9.rLMgdxGljcM2dbKRDJU8sBsCjsunzCBdbOtJs90vJsk";
-
   private url = 'https://aimerappsocket.herokuapp.com/';
 
   getconn_url: string = "https://aimerappdev.herokuapp.com/connection/getConnection";
   getMessages_url: string = "https://aimerappdev.herokuapp.com/chat/getMessages";
   sendMessage_url: string = "https://aimerappdev.herokuapp.com/chat/sendMessage";
 
-
   private socket;
-
+  AccessAppToken;
+  
   constructor(private http: HttpClient) {
 
     var connection = {
@@ -28,18 +26,17 @@ export class ConnectionService {
     this.socket = io.connect(this.url, connection);
 
     console.log("socket", this.socket);
-
+    this.AccessAppToken = localStorage.getItem("AccessAppToken");
     
-  }
+     }
 
   public adduser = (senderId) => {
     return Observable.create((observer) => {
-      this.socket.emit('adduser', '5abe4158e01c2d00d8bb4161');
+      this.socket.emit('adduser', senderId);
     });
   }
 
   public addmessgae = (data) => {
-
    this.socket.emit('add-message', data);
     return Observable.create((observer) => {
       this.socket.on("message", function (data) {
@@ -50,30 +47,35 @@ export class ConnectionService {
 
 
 
-  getconnection(token) {
-
+  getconnection() {
     let headers = new HttpHeaders();
-    headers = headers.set('authorization', 'Bearer ' + this.token);
+    headers = headers.set('authorization', 'Bearer '+this.AccessAppToken);
 
     return this.http.get(this.getconn_url, { headers: headers });
 
   }
+  getMessages_live(){
 
+    var res = [];
+       this.socket.on("message", function (data) {
+      console.log("socket_msg----",data);
+       res.push(data);
+      });
+  }
 
   getMessages(connectionId) {
 
     let data = { "connectionId": connectionId };
 
     let headers = new HttpHeaders();
-    headers = headers.set('authorization', 'Bearer ' + this.token);
+    headers = headers.set('authorization', 'Bearer '+this.AccessAppToken);
     return this.http.post(this.getMessages_url, data, { headers: headers });
 
   }
 
-
   sendMessage(data) {
     let headers = new HttpHeaders();
-    headers = headers.set('authorization', 'Bearer ' + this.token);
+    headers = headers.set('authorization', 'Bearer '+this.AccessAppToken);
     return this.http.post(this.sendMessage_url, data, { headers: headers });
   }
 

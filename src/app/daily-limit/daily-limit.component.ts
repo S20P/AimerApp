@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { Router } from '@angular/router';
 import { MemberService } from '../service/member/member.service';
+import { ProfileService } from '../service/profile/profile.service';
 
 @Component({
   selector: 'app-daily-limit',
@@ -12,39 +13,28 @@ import { MemberService } from '../service/member/member.service';
   ]
 })
 export class DailyLimitComponent implements OnInit {
-  current_token;
+  
   UserProfileImage_url = [];
-  constructor(private router: Router,  private MemberApi:MemberService,) { }
+  constructor(private router: Router,  private MemberApi:MemberService,
+    private ProfileApi:ProfileService,
+  
+  ) { }
 
   ngOnInit() {
 
 
+    this.getProfileData();
 
-    let usercheck = JSON.parse(localStorage.getItem("usercheck"));
-    let usermember = JSON.parse(localStorage.getItem("usermember"));
-
-    if(usercheck.userlogin=="false"){
-      this.router.navigate([' ']);
-    }
-    this.getmemberData();
-
-    this.current_token = usercheck.token;
- //   let userimage = usermember.userImage;
-    //this.UserProfileImage_url = userimage[0];
- 
   }
-  getmemberData() {
+  getProfileData() {
     this.UserProfileImage_url = [];
-    this.MemberApi.getmember().subscribe(res => {
-     console.log("member-data",res);
-     let oldUser = res['oldUser'];
-     let status = res['status'];
 
-     if(oldUser==false&&status==true){
-       this.router.navigate(['create-profile']);
-     }
-     else{
-      if(oldUser==true){
+   this.ProfileApi.getProfileData().subscribe(res => {
+     console.log("member-data",res);
+    
+     let status = res['status'];
+    
+      if(status==true){
         let userdata = res['user'];
         let userimage = userdata.userImage;
         //this.UserProfileImage_url = userimage[0];
@@ -52,7 +42,7 @@ export class DailyLimitComponent implements OnInit {
           this.UserProfileImage_url.push({url:userimage[i]});
        }
       }
-     }
+     
      });
  }
 

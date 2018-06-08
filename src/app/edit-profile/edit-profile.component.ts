@@ -42,34 +42,18 @@ export class EditProfileComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.getmemberData();
-        let usercheck = JSON.parse(localStorage.getItem("usercheck"));
-        //let usermember = JSON.parse(localStorage.getItem("usermember"));
-
-        if (usercheck.userlogin == "false") {
-            this.router.navigate([' ']);
-        }
-
-        this.current_token = usercheck.token;
-        //let userimage = usermember.userImage;
-        //this.UserProfileImage_url = userimage[0];
-
-       
-
+        this.getProfileData();
+      
     }
-    getmemberData() {
+    getProfileData() {
         this.Userdetails = [];
         this.UserProfileImage_url = [];
-        this.MemberApi.getmember().subscribe(res => {
-         console.log("member-data",res);
-         let oldUser = res['oldUser'];
+
+        this.ProfileApi.getProfileData().subscribe(res => {
+       
          let status = res['status'];
     
-         if(oldUser==false&&status==true){
-           this.router.navigate(['create-profile']);
-         }
-         else{
-          if(oldUser==true){
+          if(status==true){
             let userdata = res['user'];
             let userimage = userdata.userImage;
             //this.UserProfileImage_url = userimage[0];
@@ -115,7 +99,7 @@ export class EditProfileComponent implements OnInit {
             this.UserProfileImage.push(userimage[i]);
         }
           }
-         }
+         
          });
      }
     onChange(value : any) {
@@ -125,7 +109,6 @@ export class EditProfileComponent implements OnInit {
     }
 
    
-
 
     saveSettingProfile(formdata){
        console.log("save settings....");
@@ -153,7 +136,7 @@ export class EditProfileComponent implements OnInit {
          this.ProfileApi.searchSettingProfile(searchSetting_data).subscribe(res => {
              console.log("User Profile Setting is Successfull Updated..",res);
              
-             this.getmemberData();
+             this.getProfileData();
             });
     }
 

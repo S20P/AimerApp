@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 @Injectable()
 export class ProfileService {
-   current_token;
+   
    delete_image_url : string = "https://aimerappdev.herokuapp.com/profile/delete/image";
    upload_image_url : string = "https://aimerappdev.herokuapp.com/profile/uploadImage"; 
    editProfile_url  : string = "https://aimerappdev.herokuapp.com/profile/editProfile";
@@ -12,26 +12,19 @@ export class ProfileService {
    setupProfile_url : string ="https://aimerappdev.herokuapp.com/profile/setupProfile";
  
    headers = new HttpHeaders().set('Content-Type', 'application/json');
-   fb_authToken;
-  constructor(private http: HttpClient, private router: Router,) {
+   AccessAppToken;
+   
+  constructor(private http: HttpClient, private router: Router) {
+  
+    this.AccessAppToken = localStorage.getItem("AccessAppToken");
 
-    let usercheck = JSON.parse(localStorage.getItem("usercheck"));
-
-    if(usercheck.userlogin=="false"){
-        this.router.navigate([' ']);
-      }
-    
-    this.current_token = usercheck.token;
-
-    this.fb_authToken = localStorage.getItem("fb_authToken");
-
-    console.log("fb_authToken....",this.fb_authToken);
+    console.log("AccessAppToken....",this.AccessAppToken);
 
    }
 
    delete_image(num) {
       let paramdata = {"num":num};
-      let headers = this.headers.set('authorization', 'Bearer ' + this.current_token);
+      let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
        return this.http.post(this.delete_image_url,paramdata,{ headers: headers })
    }
 
@@ -47,20 +40,24 @@ export class ProfileService {
 
    console.log("param-data",yourObject);
   
-    let headers = new HttpHeaders().set('authorization', 'Bearer ' +  this.current_token);
+    let headers = new HttpHeaders().set('authorization', 'Bearer '+this.AccessAppToken);
                 
      return this.http.post(this.upload_image_url,form,{ headers: headers })
  }
 
 
  editProfile(data){
-      let headers = this.headers.set('authorization', 'Bearer ' + this.current_token);
+      let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
       return this.http.post(this.editProfile_url,data,{ headers: headers })
  }
 
+ getProfileData(){
+  let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
+  return this.http.get(this.editProfile_url,{ headers: headers })
+}
 
  searchSettingProfile(data){
-  let headers = this.headers.set('authorization', 'Bearer ' + this.current_token);
+  let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
   return this.http.post(this.searchSettingProfile_url,data,{ headers: headers })
 }
 
@@ -92,7 +89,7 @@ let data = {
   }
 console.log("myobj---",data);
 
-  let headers = this.headers.set('authorization', 'Bearer ' + this.fb_authToken);
+  let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
   return this.http.post(this.setupProfile_url,data,{ headers: headers })
 }
 

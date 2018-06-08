@@ -16,7 +16,6 @@ import { ProfileService } from '../service/profile/profile.service';
     
 export class ProfileComponent implements OnInit {
     modalRef: BsModalRef;
-    current_token; 
     UserProfileImage_url = [];
     imagestore = [];
     selectedFile: File;
@@ -41,15 +40,8 @@ export class ProfileComponent implements OnInit {
         this.isdisable_upload = true;
 
 
-        let usercheck = JSON.parse(localStorage.getItem("usercheck"));
-        let usermember = JSON.parse(localStorage.getItem("usermember"));
-
-        if (usercheck.userlogin == "false") {
-            this.router.navigate([' ']);
-        }
-
-        this.current_token = usercheck.token;
-        this.getmemberData();
+      
+        this.getProfileData();
 
 
         //let userimage = usermember.userImage;
@@ -76,7 +68,7 @@ export class ProfileComponent implements OnInit {
 
           let user = res['user'];
           let userimage = user.userImage;
-          this.getmemberData();
+          this.getProfileData();
           this.modalRef.hide();
        });
     }
@@ -105,29 +97,20 @@ export class ProfileComponent implements OnInit {
               console.log("image is uploaded success..",res);
               this.upload_loader = false;
               this.modalRef.hide();
-              this.getmemberData();
+              this.getProfileData();
              });
      }
    
-    getmemberData() {
+     getProfileData() {
         this.UserProfileImage_url = [];
         this.imagestore = [];
    
-        this.MemberApi.getmember().subscribe(res => {
-         console.log("member-data",res);
-         let oldUser = res['oldUser'];
+        this.ProfileApi.getProfileData().subscribe(res => {
+        
          let status = res['status'];
- 
-         if(oldUser==false&&status==true){
-           console.log("info",res['info']);
-           this.router.navigate(['create-profile']);
-           
-         }
-         else{
-           console.log("Already Member",res['info']);
-          if(oldUser==true){
-           console.log("olduser is..",oldUser);
-              
+         
+          if(status==true){
+        
             let userdata = res['user'];
             let userimage = userdata.userImage;
             //this.UserProfileImage_url = userimage[0];
@@ -141,8 +124,7 @@ export class ProfileComponent implements OnInit {
              }
           }
        
-         }
- 
+        
          });
      }
 
@@ -153,7 +135,7 @@ export class ProfileComponent implements OnInit {
 
            this.ProfileApi.editProfile(data).subscribe(res => {
                console.log("user profile is uploaded success..",res);
-               this.getmemberData();
+               this.getProfileData();
               });
      }
 

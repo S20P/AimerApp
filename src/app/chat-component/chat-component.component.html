@@ -1,95 +1,93 @@
 <div class="top-head">
-	<div class="container-fluid">
-		<div class="col-xs-4">
-			<div class="drake">
-					<a [routerLink]="['/edit-profile/']">
-						<div *ngFor="let img of UserProfileImage_url; let i = index">
-									<div *ngIf="img.url==undefined;else avtar">
-											<img src="assets/john.jpg" class="img-circle">
-									</div>
-									<ng-template #avtar>
-											<img src="{{img.url}}" class="img-circle">
-									</ng-template>
-						 </div>
-				 </a>	
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="small-icon hidden-xs">
-				<a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
-			</div>
-			<div class="small-icon visible-xs">
-				<a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="small-icon chat hidden-xs">
-				  <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
-			</div>
-			<div class="small-icon chat visible-xs">
-				  <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
-			</div>
-		</div>
-	</div>
+    <div class="container-fluid">
+        <div class="col-xs-4">
+            <div class="drake">
+                <a [routerLink]="['/edit-profile/']">
+                    <div *ngFor="let img of UserProfileImage_url; let i = index">
+                        <div *ngIf="img.url==undefined;else avtar">
+                            <img src="assets/john.jpg" class="img-circle">
+                        </div>
+                        <ng-template #avtar>
+                            <img src="{{img.url}}" class="img-circle">
+                        </ng-template>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon hidden-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+            </div>
+            <div class="small-icon visible-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon chat hidden-xs">
+                <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+            </div>
+            <div class="small-icon chat visible-xs">
+                <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
 <div class="chat-panel">
-<div class="container">
-<div class="col-sm-1 col-md-1"></div>
-<div class="col-sm-10 col-md-10">
-	<div *ngFor="let data of connection_result">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-		<div class="row">
-		
-			<div class="col-xs-4">
-				<img src="{{data.targetImage}}"  width="127px" class="img-responsive rounded-circle">
-			</div>
-			<div class="col-xs-6">	
-				<h2>{{data.targetName}}</h2>
-			</div>	
-			<div class="col-xs-2"></div>
-			
-	</div>
-	</div>
-    <div class="panel-body chattab-scrollbar"  id="scrollbarfancy">
-		
-		<ul class="chat-container" *ngFor="let msg of message_result">
-		 
-			<li *ngIf="msg.senderId == data.targetId;else sender" class="life-container" class="chat-left">
-					<h2 ><span id="msg_time">{{msg.time | date:'h:mm'}}</span><span id="msg_text">{{msg.text}}</span></h2>
-			</li>
-		
-			<ng-template #sender>
-					<li class="life-container" class="chat-right">
-								<h2 ><span id="msg_time">{{msg.time | date:'h:mm'}}</span><span id="msg_text">{{msg.text}}</span></h2>
-					</li>
-			</ng-template>
-			
-		</ul>
-		<ul class="chat-container">
-				<li class="life-container" class="chat-right" *ngFor="let goal of goals">
-						<h2 ><span id="msg_time">{{goal.time | date:'h:mm'}}</span><span id="msg_text">{{goal.text}}</span></h2>
-				</li>
-		</ul>
-	</div>
-	<div class="panel-footer">
-	<form #chatForm="ngForm" (ngSubmit)="addItem(chatForm)" novalidate>
-	<div class="row">
-	<div class="col-xs-8">
-	  <input type="text" class="form-control" name="item" placeholder="Type Something Here" [(ngModel)]="goalText" required="required">
-	 </div>
-	 <div class="col-xs-4 btn-in">
-       <button type="submit" [disabled]="!chatForm.valid" class="btn custom-btn">{{ btnText }}</button>
-      </div>
+    <div class="container">
+        <div class="col-sm-1 col-md-1"></div>
+        <div class="col-sm-10 col-md-10">
+            <div *ngFor="let data of connection_result">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+
+                            <div class="col-xs-4">
+                                <img src="{{data.targetImage}}" width="127px" class="img-responsive rounded-circle">
+                            </div>
+                            <div class="col-xs-6">
+                                <h2>{{data.targetName}}</h2>
+                            </div>
+                            <div class="col-xs-2"></div>
+
+                        </div>
+                    </div>
+                    <div class="panel-body chattab-scrollbar" id="scrollbarfancy">
+
+                        <ul class="chat-container" *ngFor="let msg of message_result">
+
+                            <li *ngIf="msg.senderId == data.targetId" class="life-container" class="chat-left">
+                                <h2><span id="msg_time">{{msg.time | date:'h:mm'}}</span><span id="msg_text">{{msg.text}}</span></h2>
+                            </li>
+                            <li *ngIf="msg.senderId !== data.targetId" class="life-container" class="chat-right">
+                                <h2><span id="msg_time">{{msg.time | date:'h:mm'}}</span><span id="msg_text">{{msg.text}}</span></h2>
+                            </li>
+                            <!-- <ng-template #sender>
+                                <li class="life-container" class="chat-right">
+                                    <h2><span id="msg_time">{{msg.time | date:'h:mm'}}</span><span id="msg_text">{{msg.text}}</span></h2>
+                                </li>
+                            </ng-template> -->
+
+                        </ul>
+
+                    </div>
+                    <div class="panel-footer">
+                        <form #chatForm="ngForm" (ngSubmit)="addItem(chatForm)" novalidate>
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <input type="text" class="form-control" name="item" placeholder="Type Something Here" [(ngModel)]="goalText" required="required">
+                                </div>
+                                <div class="col-xs-4 btn-in">
+                                    <button type="submit" [disabled]="!chatForm.valid" class="btn custom-btn">{{ btnText }}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1 col-md-1"></div>
     </div>
-   </form>
-	</div>
-</div>
-  </div>
-</div>
-<div class="col-sm-1 col-md-1"></div>
-</div>
 </div>
