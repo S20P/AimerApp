@@ -8,7 +8,7 @@ export class DiscoverCardsService {
 
   url : string = "https://aimerappdev.herokuapp.com/user/discoverCards";
 
-  AccessAppToken;
+  AccessAppToken:string;
 
   constructor(private http: HttpClient) { 
             this.AccessAppToken = localStorage.getItem("AccessAppToken");

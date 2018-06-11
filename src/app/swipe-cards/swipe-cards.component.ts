@@ -100,7 +100,14 @@ export class SwipeCardsComponent{
               private ProfileApi:ProfileService,
               
   ) {
-	
+  
+    
+    let AccessAppToken =  localStorage.getItem("AccessAppToken");
+       
+    if(AccessAppToken==null){
+        this.router.navigate(['/']);
+    }
+
     this.stackConfig = {
   throwOutConfidence: (offsetX, offsetY, element) => {
         return Math.min(Math.max(Math.abs(offsetX) / (element.offsetWidth / 2), Math.abs(offsetY) / (element.offsetHeight / 2)), 1);

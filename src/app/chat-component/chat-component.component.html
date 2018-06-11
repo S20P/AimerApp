@@ -5,7 +5,7 @@
                 <a [routerLink]="['/edit-profile/']">
                     <div *ngFor="let img of UserProfileImage_url; let i = index">
                         <div *ngIf="img.url==undefined;else avtar">
-                            <img src="assets/john.jpg" class="img-circle">
+                            <img src="assets/avatar_user.jpg" class="img-circle">
                         </div>
                         <ng-template #avtar>
                             <img src="{{img.url}}" class="img-circle">

@@ -12,7 +12,7 @@ export class ConnectionService {
   sendMessage_url: string = "https://aimerappdev.herokuapp.com/chat/sendMessage";
 
   private socket;
-  AccessAppToken;
+  AccessAppToken:string;
   
   constructor(private http: HttpClient) {
 

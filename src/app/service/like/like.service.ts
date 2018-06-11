@@ -9,7 +9,7 @@ export class LikeService {
   disLike_url : string = "https://aimerappdev.herokuapp.com/user/dislike";
 
    headers = new HttpHeaders().set('Content-Type', 'application/json');
-   AccessAppToken;
+   AccessAppToken:string;
 
   constructor(private http: HttpClient, private router: Router,) {
 

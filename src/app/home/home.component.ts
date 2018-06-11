@@ -107,10 +107,10 @@ export class HomeComponent implements OnInit {
                     console.log("user profile is.",res);
                     let status1 = res['status'];
                     if(status1==true){
-                      this.router.navigate(['swipe-cards']);
+                      this.router.navigate(['/swipe-cards']);
                     }
                     else{
-                      this.router.navigate(['setup-profile']);
+                      this.router.navigate(['/setup-profile']);
                     }
                    });
                 //get profile API *end
@@ -130,8 +130,7 @@ export class HomeComponent implements OnInit {
            let AppToken = res['token'];
            console.log("APP-Token",AppToken);
            localStorage.setItem("AccessAppToken",AppToken);
-        
-           this.router.navigate(['swipe-cards']);
+           this.router.navigate(['/swipe-cards']);
          }
  
          });

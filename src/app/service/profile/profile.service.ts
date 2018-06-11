@@ -10,9 +10,9 @@ export class ProfileService {
    editProfile_url  : string = "https://aimerappdev.herokuapp.com/profile/editProfile";
    searchSettingProfile_url :string = "https://aimerappdev.herokuapp.com/user/searchSetting";
    setupProfile_url : string ="https://aimerappdev.herokuapp.com/profile/setupProfile";
- 
+   deactiveAccount_url : string = "https://aimerappdev.herokuapp.com/user/delete/account";
    headers = new HttpHeaders().set('Content-Type', 'application/json');
-   AccessAppToken;
+   AccessAppToken:string;
    
   constructor(private http: HttpClient, private router: Router) {
   
@@ -52,7 +52,7 @@ export class ProfileService {
  }
 
  getProfileData(){
-  let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
+  let headers = new HttpHeaders().set('authorization', 'Bearer '+this.AccessAppToken);
   return this.http.get(this.editProfile_url,{ headers: headers })
 }
 
@@ -91,6 +91,12 @@ console.log("myobj---",data);
 
   let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
   return this.http.post(this.setupProfile_url,data,{ headers: headers })
+}
+
+
+DeactivateAccount(data){
+  let headers = this.headers.set('authorization', 'Bearer '+this.AccessAppToken);
+  return this.http.post(this.deactiveAccount_url,data,{ headers: headers })
 }
 
 

@@ -7,6 +7,8 @@ import {Router} from '@angular/router';
 
 import { ProfileService } from '../service/profile/profile.service';
 
+declare var jQuery: any;
+declare var $: any;
 
 @Component({
      selector: 'app-profile',
@@ -22,13 +24,23 @@ export class ProfileComponent implements OnInit {
     isdisable_upload;
     userAboutMe;
     upload_loader:boolean;
+    uploadedFileName;
     constructor(
         private modalService : BsModalService,
         private authService : AuthService,
         private router : Router,
         private MemberApi : MemberService,
         private ProfileApi:ProfileService,
-    ) {}
+    ) {
+      let AccessAppToken =  localStorage.getItem("AccessAppToken");
+       
+      if(AccessAppToken==null){
+          this.router.navigate(['/']);
+      }
+    
+       this.uploadedFileName = "";
+
+    }
 
     openModal(template : TemplateRef<any>) {
         this.modalRef = this.modalService.show(template);
@@ -73,7 +85,6 @@ export class ProfileComponent implements OnInit {
        });
     }
 
-
   
 
     onFileChanged(event) {
@@ -84,6 +95,7 @@ export class ProfileComponent implements OnInit {
         this.isdisable_upload = false;
         }
         console.log("file",this.selectedFile);
+        this.uploadedFileName = this.selectedFile.name;
      }
 
      onUpload(num){
@@ -112,6 +124,7 @@ export class ProfileComponent implements OnInit {
           if(status==true){
         
             let userdata = res['user'];
+            console.log("User-data",userdata);
             let userimage = userdata.userImage;
             //this.UserProfileImage_url = userimage[0];
             this.userAboutMe = userdata.userAboutMe;
@@ -120,12 +133,44 @@ export class ProfileComponent implements OnInit {
              }
 
             for(var i=0; i<6;i++){
-                this.imagestore.push({url:userimage[i]});
+                var avt_url = userimage[i];
+                console.log("url is:",avt_url);
+                var user_image;
+               // var Image_check = isUrlExists(avt_url);
+
+                // if (Image_check == false) {
+                //   console.log('Image does not exist');
+                //   user_image = "/assets/not_found.jpg"
+                // }
+                // else {
+                //   console.log('Image Exists');
+                //   user_image = avt_url;
+                // }
+                this.imagestore.push({url:avt_url});
              }
           }
        
         
          });
+
+         function isUrlExists(image_url) {
+            var Image_Exists = false;
+            $.ajax(
+              {
+                async: false,
+                url: image_url,
+                success: function (data) {
+                  Image_Exists = true;
+                },
+                error: function (data) {
+                  Image_Exists = false;
+                }
+              });
+      
+            return Image_Exists;
+          }
+
+
      }
 
 

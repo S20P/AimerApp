@@ -27,7 +27,6 @@ import { LikeService } from './service/like/like.service';
 import { ProfileService } from './service/profile/profile.service';
 import { CurrentLocationService } from './service/current-location/current-location.service';
 
-
 const fbLoginOptions = {
   scope: 'public_profile, email, user_birthday, user_friends',
   return_scopes: true,
@@ -38,7 +37,7 @@ const config = new AuthServiceConfig([
   
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('561602290896109',fbLoginOptions)
+    provider: new FacebookLoginProvider('539139566241716',fbLoginOptions)
   }
  
 ]);

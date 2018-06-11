@@ -5,7 +5,7 @@
                 <a [routerLink]="['/edit-profile/']">
                     <div *ngFor="let img of UserProfileImage_url; let i = index">
                         <div *ngIf="img.url==undefined;else avtar">
-                            <img src="assets/john.jpg" class="img-circle">
+                            <img src="assets/avatar_user.jpg" class="img-circle">
                         </div>
                         <ng-template #avtar>
                             <img src="{{img.url}}" class="img-circle">
@@ -80,6 +80,31 @@
 				</div>
 			  </a> -->
             </div>
+
+            <div *ngIf="connection_result.length <=0 ">
+                <div class="connectionless">
+                    <h1> </h1>
+                </div>
+                <section class="">
+                    <div class="container">
+                        <div class="col-sm-1 col-md-1 col-lg-3"></div>
+                        <div class="col-sm-10 col-md-10 col-lg-6">
+                            <div class="nothingCardsection">
+                                <div class="discover_icon">
+                                    <i class="fa fa-comments" aria-hidden="true"></i>
+                                </div>
+                                <div class="discover_about">
+                                    <h1 class="title">Keep Swiping</h1>
+                                    <p class="subtitle">You do not have any Connection yet, Swipe more people and make connection.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-1 col-md-1 col-lg-3"></div>
+                    </div>
+                </section>
+            </div>
+
         </div>
         <div class="col-sm-1 col-md-1"></div>
 

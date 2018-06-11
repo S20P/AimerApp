@@ -24,7 +24,11 @@ class Signup {
                 public profession: string = '',
                 public pets: string = '',
                
-            ) { }
+            ) { 
+
+
+                
+            }
 }
 
 

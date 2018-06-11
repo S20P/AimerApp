@@ -39,6 +39,12 @@ export class ChatComponentComponent implements OnInit {
     private http: HttpClient
     
   ) { 
+    let AccessAppToken =  localStorage.getItem("AccessAppToken");
+       
+    if(AccessAppToken==null){
+        this.router.navigate(['/']);
+    }
+
     var connection = {
       "force new connection": true,
       "reconnectionAttempts": "Infinity",

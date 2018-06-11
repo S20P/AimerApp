@@ -18,7 +18,13 @@ export class DailyLimitComponent implements OnInit {
   constructor(private router: Router,  private MemberApi:MemberService,
     private ProfileApi:ProfileService,
   
-  ) { }
+  ) {
+    let AccessAppToken =  localStorage.getItem("AccessAppToken");
+       
+    if(AccessAppToken==null){
+        this.router.navigate(['/']);
+    }
+   }
 
   ngOnInit() {
 

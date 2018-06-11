@@ -1,133 +1,130 @@
 <div class="top-head">
-	<div class="container-fluid">
-		<div class="col-xs-4">
-			<div class="drake">
-				<a [routerLink]="['/edit-profile/']">
-					<div *ngFor="let img of UserProfileImage_url; let i = index">
-								<div *ngIf="img.url==undefined;else avtar">
-										<img src="assets/john.jpg" class="img-circle">
-								</div>
-								<ng-template #avtar>
-										<img src="{{img.url}}" class="img-circle">
-								</ng-template>
-					 </div>
-			 </a>		
-		</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="small-icon hidden-xs">
-				<a [routerLink]="['//']"><img src="assets/small-icon.png"></a>
-			</div>
-			<div class="small-icon visible-xs">
-				<a [routerLink]="['//']"><img src="assets/small-icon-sm.png"></a>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="small-icon chat hidden-xs">
-				  <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
-			</div>
-			<div class="small-icon chat visible-xs">
-				  <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
-			</div>
-		</div>
-	</div>
+    <div class="container-fluid">
+        <div class="col-xs-4">
+            <div class="drake">
+                <a [routerLink]="['/edit-profile/']">
+                    <div *ngFor="let img of UserProfileImage_url; let i = index">
+                        <div *ngIf="img.url==undefined;else avtar">
+                            <img src="assets/john.jpg" class="img-circle">
+                        </div>
+                        <ng-template #avtar>
+                            <img src="{{img.url}}" class="img-circle">
+                        </ng-template>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon hidden-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+            </div>
+            <div class="small-icon visible-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon chat hidden-xs">
+                <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+            </div>
+            <div class="small-icon chat visible-xs">
+                <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+            </div>
+        </div>
+    </div>
 </div>
 
- <div *ngIf="cards.length > 0 ;else nothingCard">
-	<div id="viewport">
-		<ul class="stack" swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutright)="voteUp(true)" (throwoutleft)="voteUp(false)" (throwoutup)="voteUp(true)"  >
-			<li #mycards1 swing-card *ngFor="let c of cards">
-				<div *ngIf="aimcard" class="aim-card">
-					<div id="aim-icon"  class="aim-icon aim-like" >
-					 <span class="glyphicon glyphicon-heart"></span>
-					</div>
-					<div id="aim-icon"  class="aim-icon aim-dislike" >
-					 <span class="glyphicon glyphicon-remove"></span>
-					</div>
-					<div id="aim-icon"  class="aim-icon aim-superlike" >
-					 <span class="glyphicon glyphicon-star"></span>
-					</div>
-					<div class="aim-image">
-						<img src="{{c.userImage[0]}}">
-					</div>
-					<div class="aim-caption " (click)="aimcards()">
-						<h2>{{ c.username1}} ,{{c.age}}</h2>
-					</div>
-				</div>
-				<div *ngIf="aimfullcard" class="full">
-				<div class="aimfullwrapper"><button class="aim-fullclose" (click)="closeaimcards()" > <span class="glyphicon glyphicon-arrow-down"></span></button></div>
-				
-					<div class="aim-image">
-					
-					<carousel>
-						<slide *ngFor="let picture of c.userImage">
-						<img src="{{ picture }}">
-						</slide>
-					</carousel>
-					</div>
-					<div class="aim-caption">
-						<h2>{{ c.username1 }} {{ c.age }}</h2>
-						<h6>{{c.distance}}km away</h6>
-						<h4>i am {{c.username1}}. i live in {{c.homeTown}}</h4>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-	
-	<div class="swipe-modal">
-	<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-body">
-					<p>Plus user Limit reached for this action</p>
-					<p>Please try again tomorrow</p>
-					<button type="button" class="close" aria-label="Close" (click)="dailyLimit()">
+<div *ngIf="cards.length > 0 ;else nothingCard">
+    <div id="viewport">
+        <ul class="stack" swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutright)="voteUp(true)" (throwoutleft)="voteUp(false)" (throwoutup)="voteUp(true)">
+            <li #mycards1 swing-card *ngFor="let c of cards">
+                <div *ngIf="aimcard" class="aim-card">
+                    <div id="aim-icon" class="aim-icon aim-like">
+                        <span class="glyphicon glyphicon-heart"></span>
+                    </div>
+                    <div id="aim-icon" class="aim-icon aim-dislike">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                    <div id="aim-icon" class="aim-icon aim-superlike">
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <div class="aim-image">
+                        <img src="{{c.userImage[0]}}">
+                    </div>
+                    <div class="aim-caption " (click)="aimcards()">
+                        <h2>{{ c.username1}} ,{{c.age}}</h2>
+                    </div>
+                </div>
+                <div *ngIf="aimfullcard" class="full">
+                    <div class="aimfullwrapper"><button class="aim-fullclose" (click)="closeaimcards()"> <span class="glyphicon glyphicon-arrow-down"></span></button></div>
+
+                    <div class="aim-image">
+
+                        <carousel>
+                            <slide *ngFor="let picture of c.userImage">
+                                <img src="{{ picture }}">
+                            </slide>
+                        </carousel>
+                    </div>
+                    <div class="aim-caption">
+                        <h2>{{ c.username1 }} {{ c.age }}</h2>
+                        <h6>{{c.distance}}km away</h6>
+                        <h4>i am {{c.username1}}. i live in {{c.homeTown}}</h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="swipe-modal">
+        <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>Plus user Limit reached for this action</p>
+                        <p>Please try again tomorrow</p>
+                        <button type="button" class="close" aria-label="Close" (click)="dailyLimit()">
 						<span aria-hidden="true">Ok</span>
 					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-	
-	<div class="icons">
-		<div class="container">
-			<div class="col-md-12">
-				<button (click)="voteUp(false)" class="aim-remove" ><span class="glyphicon glyphicon-remove "></span></button>
-				<button class="aim-star" (click)="voteUp('superlike')"><span class="glyphicon glyphicon-star "></span></button>
-				<button (click)="voteUp(true)" class="aim-heart"><span class="glyphicon glyphicon-heart "></span></button>
-			</div>
-		</div>
-	</div>
- </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="icons">
+        <div class="container">
+            <div class="col-md-12">
+                <button (click)="voteUp(false)" class="aim-remove"><span class="glyphicon glyphicon-remove "></span></button>
+                <button class="aim-star" (click)="voteUp('superlike')"><span class="glyphicon glyphicon-star "></span></button>
+                <button (click)="voteUp(true)" class="aim-heart"><span class="glyphicon glyphicon-heart "></span></button>
+            </div>
+        </div>
+    </div>
+</div>
 <ng-template #nothingCard>
 
-		<section class="discovery">
-				<div class="container">
-					<div class="col-sm-1 col-md-1 col-lg-3"></div>
-						<div class="col-sm-10 col-md-10 col-lg-6">
-							 <div class="nothingCardsection">
-                                <div class="discover_icon">
-								  <i class="fas fa-users"></i>
-								 </div>
-								 <div class="discover_about">
-										<h1 class="title">No Result Found</h1>
-										<p class="subtitle">We could not find any users as per your serach settings.Please expand your search settings or try again in sometime.</p>
-								 </div>
-								 <div class="icons disabled_icon">
-												<button class="aim-remove disabled"><span class="glyphicon glyphicon-remove "></span></button>
-												<button class="aim-star disabled"><span class="glyphicon glyphicon-star "></span></button>
-												<button  class="aim-heart disabled"><span class="glyphicon glyphicon-heart "></span></button>
-								 </div>
-							 </div>
-						</div>
-						<div class="col-sm-1 col-md-1 col-lg-3"></div>
-				</div>	
-		</section>
+    <section class="discovery">
+        <div class="container">
+            <div class="col-sm-1 col-md-1 col-lg-3"></div>
+            <div class="col-sm-10 col-md-10 col-lg-6">
+                <div class="nothingCardsection">
+                    <div class="discover_icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="discover_about">
+                        <h1 class="title">No Result Found</h1>
+                        <p class="subtitle">We could not find any users as per your serach settings.Please expand your search settings or try again in sometime.</p>
+                    </div>
+                    <div class="icons disabled_icon">
+                        <button class="aim-remove disabled"><span class="glyphicon glyphicon-remove "></span></button>
+                        <button class="aim-star disabled"><span class="glyphicon glyphicon-star "></span></button>
+                        <button class="aim-heart disabled"><span class="glyphicon glyphicon-heart "></span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-3"></div>
+        </div>
+    </section>
 
-	
+
 </ng-template>
-
-
-

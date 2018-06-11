@@ -1,106 +1,116 @@
 <div class="top-head">
-	<div class="container-fluid">
-		<div class="col-xs-4">
-			<div class="drake">
-				<a [routerLink]="['/edit-profile/']">
-					<div *ngFor="let img of UserProfileImage_url; let i = index">
-								<div *ngIf="img.url==undefined;else avtar">
-										<img src="assets/john.jpg" class="img-circle">
-								</div>
-								<ng-template #avtar>
-										<img src="{{img.url}}" class="img-circle">
-					    	</ng-template>
-					 </div>
-			 </a>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="small-icon hidden-xs">
-				<a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
-			</div>
-			<div class="small-icon visible-xs">
-				<a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
-			</div>
-		</div>
-		<div class="col-xs-4">
-			<div class="small-icon chat hidden-xs">
-				 <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
-			</div>
-			<div class="small-icon chat visible-xs">
-				  <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
-			</div>
-		</div>
-	</div>
+    <div class="container-fluid">
+        <div class="col-xs-4">
+            <div class="drake">
+                <a [routerLink]="['/edit-profile/']">
+                    <div *ngFor="let img of UserProfileImage_url; let i = index">
+                        <div *ngIf="img.url==undefined;else avtar">
+                            <img src="assets/avatar_user.jpg" class="img-circle">
+                        </div>
+                        <ng-template #avtar>
+                            <img src="{{img.url}}" class="img-circle">
+                        </ng-template>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon hidden-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+            </div>
+            <div class="small-icon visible-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon chat hidden-xs">
+                <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+            </div>
+            <div class="small-icon chat visible-xs">
+                <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="upload-container">
-<div class="container text-center">
-<div class="col-md-12">
- <div *ngFor="let img of imagestore; let i = index">
-		<div class="col-xs-6">
-          <div *ngIf="img.url==undefined;else removeimg">
-	
-				<div class="image-wrap">
-					<img src="assets/john.jpg" >
-					<button type="button" (click)="openModal(template)"><span class="glyphicon glyphicon-plus"></span></button>
-				</div>
-		  
-	     </div>
-		<ng-template #removeimg>
-		
-				<div class="image-wrap" >
-						<img src="{{img.url}}" >
-						<button type="button" (click)="openModal(deleteImgtemplate)"><span class="glyphicon glyphicon-remove"></span></button>
-			    </div>
-		</ng-template>
-	  </div>	
-	  
-	     <ng-template #template>
-			<div class="profil-modal"> 
-			  <div class="modal-header">
-				<h4 class="modal-title pull-left">Upload Image</h4>
-				<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <div class="container text-center">
+        <div class="col-md-12">
+            <div *ngFor="let img of imagestore; let i = index">
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <div *ngIf="img.url==undefined;else removeimg">
+
+                        <!-- <div class="image-wrap userphotos">
+                            <img src="assets/avatar_user.jpg">
+                            <button type="button" (click)="openModal(template)"><span class="glyphicon glyphicon-plus"></span></button>
+                        </div> -->
+
+                        <div class="horizontal  userphotos image-wrap">
+                            <div class="vertical">
+                                <img src="assets/avatar_user.jpg">
+                                <button type="button" (click)="openModal(template)"><span class="glyphicon glyphicon-plus"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <ng-template #removeimg>
+
+                        <div class="horizontal  userphotos image-wrap">
+                            <div class="vertical">
+                                <img src="{{img.url}}">
+                                <button type="button" (click)="openModal(deleteImgtemplate)"><span class="glyphicon glyphicon-remove"></span></button>
+                            </div>
+                        </div>
+                        <!-- <div class="image-wrap userphotos">
+                            <img src="{{img.url}}">
+                            <button type="button" (click)="openModal(deleteImgtemplate)"><span class="glyphicon glyphicon-remove"></span></button>
+                        </div> -->
+                    </ng-template>
+                </div>
+
+                <ng-template #template>
+                    <div class="profil-modal">
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Upload Image</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
 				  <span aria-hidden="true">&times;</span>
 				</button>
-			  </div>
-			  <div class="modal-body">
-						<input 
-						style="display: none" 
-						type="file"   accept="image/*" (change)="onFileChanged($event)" 
-						#fileInput>
-				<button type="button" class="btn btn-primary btn-block btn1"  (click)="fileInput.click()" aria-label="Close"> Select File
+                        </div>
+                        <div class="modal-body">
+                            <input style="display: none" type="file" accept="image/*" (change)="onFileChanged($event)" #fileInput>
+                            <button type="button" class="btn btn-primary btn-block btn1" (click)="fileInput.click()" aria-label="Close"> Select File <span class="filename">{{uploadedFileName}}</span>
 				</button>
-				<button  type="button" class="btn btn-success btn-block btn4" [disabled]="isdisable_upload" (click)="onUpload(i)">Upload! <i class="fa fa-spinner fa-spin" *ngIf="upload_loader"></i> </button>
-				 <button type="button" class="btn btn-danger btn-block btn2" aria-label="Close" (click)="modalRef.hide()"> Cancel
+                            <button type="button" class="btn btn-success btn-block btn4" [disabled]="isdisable_upload" (click)="onUpload(i)">Upload! <i class="fa fa-spinner fa-spin" *ngIf="upload_loader"></i> </button>
+                            <button type="button" class="btn btn-danger btn-block btn2" aria-label="Close" (click)="modalRef.hide()"> Cancel
 				</button>
-			  </div>
-			  </div>  
-			</ng-template>
+                        </div>
+                    </div>
+                </ng-template>
 
-			<ng-template #deleteImgtemplate>
-					<div class="modal-body">
-					<div class="modal-body text-center confirm-modal">
-					  <p>Do you want to confirm?</p>
-					  <button type="button" class="btn btn-custom2" (click)="confirm_delete_img(i)" aria-label="Close" >Yes</button>
-					  <button type="button" class="btn btn-custom3"(click)="modalRef.hide()" aria-label="Close" >No</button>
-					</div>
-				</div>
-			</ng-template>
+                <ng-template #deleteImgtemplate>
+                    <div class="modal-body">
+                        <div class="modal-body text-center confirm-modal">
+                            <p>Do you want to confirm?</p>
+                            <button type="button" class="btn btn-custom2" (click)="confirm_delete_img(i)" aria-label="Close">Yes</button>
+                            <button type="button" class="btn btn-custom3" (click)="modalRef.hide()" aria-label="Close">No</button>
+                        </div>
+                    </div>
+                </ng-template>
 
- </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
- 
- 
+
+
 <div class="profile-about">
-	<div class="container">
-		<div class="col-md-12">
-			<div class="form-group">
-			  <label for="comment">About Description</label>
-			  <textarea class="form-control" rows="5" id="comment" #userabout>{{userAboutMe}}</textarea>
-			      <button type="button" class="btn btn3 pull-right" (click)="updateProfile(userabout.value)">Save</button>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="comment">About Description</label>
+                <textarea class="form-control" rows="5" id="comment" #userabout>{{userAboutMe}}</textarea>
+                <button type="button" class="btn btn3 pull-right" (click)="updateProfile(userabout.value)">Save</button>
+            </div>
+        </div>
+    </div>
 </div>

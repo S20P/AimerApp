@@ -1,39 +1,46 @@
 .top-head {
-	 float:left;
-	 width:100%;
-	 text-align:center;
-	 background:#ef5858;
-	 padding:0px;
+    float: left;
+    width: 100%;
+    text-align: center;
+    background: #ef5858;
+    padding: 0px;
 }
+
 .small-icon span {
-	color: #fff;
+    color: #fff;
     font-size: 80px;
-    padding-top: 20px;	 
+    padding-top: 20px;
 }
-.top-head .img-circle  {
-	border-radius: 50%;
+
+.top-head .img-circle {
+    border-radius: 50%;
     width: 55px;
     height: 55px;
     object-fit: cover;
-	margin-top: 10px;
+    margin-top: 10px;
 }
+
 .chat img {
-	  margin-top:10px;
+    margin-top: 10px;
 }
+
 .chat-tabs h2 {
-	padding-top:50px;
-	color:#000;
-	text-align:left;
-}  
-.chat-tabs .list-group-item {
-	border:1px solid #ef5858;
-	cursor: pointer;
+    padding-top: 50px;
+    color: #000;
+    text-align: left;
 }
+
+.chat-tabs .list-group-item {
+    border: 1px solid #ef5858;
+    cursor: pointer;
+}
+
 .chat-tabs {
-	float:left;
-	width:100%;
-	padding:30px 0px;
-}  
+    float: left;
+    width: 100%;
+    padding: 30px 0px;
+}
+
 .chat-tabs .aim-badge {
     display: block;
     border-radius: 50%;
@@ -43,27 +50,73 @@
     margin-top: 40px;
     height: 30px;
     background: #ef5858;
-}   
-  
+}
 
-@media only screen and (min-width: 0px) and (max-width: 576px){
-.top-head .img-circle  {
-    width: 55px;
-    height: 55px;
-	margin-top: 5px;
-} 
-.small-icon span {
-	color: #fff;
-    font-size: 50px;
-    padding-top: 5px;	 
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .top-head .img-circle {
+        width: 55px;
+        height: 55px;
+        margin-top: 5px;
+    }
+    .small-icon span {
+        color: #fff;
+        font-size: 50px;
+        padding-top: 5px;
+    }
+    .chat-tabs .aim-badge {
+        width: 10px;
+        margin-top: 15px;
+        height: 10px;
+    }
+    .chat-tabs h2 {
+        padding-top: 15px;
+        font-size: 14px;
+    }
 }
-.chat-tabs .aim-badge {
-    width: 10px;
-	margin-top: 15px;
-    height: 10px;
-} 
-.chat-tabs h2 {
-	padding-top:15px;
-	font-size:14px;
+
+.nothingCardsection {
+    padding: 40px 5px;
+    text-align: center;
+    margin: auto;
+    float: none;
+    display: block;
+    color: rgba(134, 94, 94, 0.5);
 }
+
+.disabled_icon {
+    top: auto;
+    position: relative;
+}
+
+.disabled_icon .disabled {
+    cursor: no-drop;
+    opacity: .80;
+}
+
+button.aim-remove.disabled:hover {
+    background: #ef5858 !important;
+    color: #ffffff!important;
+}
+
+button.aim-star.disabled:hover {
+    background: #2a76f7 !important;
+    color: #ffffff!important;
+}
+
+button.aim-heart.disabled:hover {
+    background: #5cea55 !important;
+    color: #ffffff!important;
+}
+
+.discover_icon {
+    font-size: 100px;
+}
+
+.discover_about .title {
+    font-weight: 600;
+}
+
+.discover_about .subtitle {
+    padding: 10px 20px;
+    font-size: 18px;
 }

@@ -23,10 +23,14 @@ export class ChatBoxComponent implements OnInit {
     private ProfileApi: ProfileService,
 
   ) { 
-
+    let AccessAppToken =  localStorage.getItem("AccessAppToken");
+       
+    if(AccessAppToken==null){
+        this.router.navigate(['/']);
+    }
     this._id = localStorage.getItem("_id");
     console.log("_id....",this._id);
-
+   
   }
 
   ngOnInit() {

@@ -1,33 +1,46 @@
 @import "~nouislider/distribute/nouislider.min.css";
-
 .mat-slider-horizontal .mat-slider-ticks-container {
-	background:#ef5858;
+    background: #ef5858;
 }
-.mat-slider:not(.mat-slider-disabled) .mat-slider-thumb, .mat-slider:not(.mat-slider-disabled) .mat-slider-thumb-label {
+
+.mat-slider:not(.mat-slider-disabled) .mat-slider-thumb,
+.mat-slider:not(.mat-slider-disabled) .mat-slider-thumb-label {
     border: 2px solid #ef5858;
     z-index: 9999999;
     background: #fff;
 }
-.mat-slider-thumb-label-text{
-	font-size: 16px;
+
+.mat-slider-thumb-label {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.mat-slider-thumb-label-text {
+    font-size: 16px;
     color: #ef5858;
 }
+
 .inner-wrap .mat-slider-thumb {
     bottom: -12px;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
 }
+
 .aim-slider .noUi-connect {
     background: #ef5858;
 }
+
 .aim-slider .noUi-horizontal {
     height: 2px;
     border: none;
 }
+
 .aim-slider .noUi-connects {
     background: #ef5858;
 }
-.aim-slider .noUi-handle:after, .aim-slider .noUi-handle:before {
+
+.aim-slider .noUi-handle:after,
+.aim-slider .noUi-handle:before {
     content: "";
     display: none;
     position: absolute;
@@ -37,6 +50,7 @@
     left: 14px;
     top: 6px;
 }
+
 .aim-slider .noUi-horizontal .noUi-handle {
     border: 1px solid #ef5858;
     width: 18px;
@@ -45,80 +59,96 @@
     left: -17px;
     top: -8px;
 }
+
 .aim-slider .noUi-horizontal .noUi-handle:focus {
-	outline:0;
+    outline: 0;
 }
-.aim-slider .noUi-horizontal .noUi-handle:focus{
-	box-shadow:none;
+
+.aim-slider .noUi-horizontal .noUi-handle:focus {
+    box-shadow: none;
 }
-.gender .mat-slide-toggle-input.cdk-visually-hidden{
-	display:none;
+
+.gender .mat-slide-toggle-input.cdk-visually-hidden {
+    display: none;
 }
+
 .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-	border: 2px solid rgba(68, 219, 94, 1);
-	z-index: 999;
-	background: #fff;
+    border: 2px solid rgba(68, 219, 94, 1);
+    z-index: 999;
+    background: #fff;
 }
+
 .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-    background-color:rgba(68, 219, 94, 0.5)
+    background-color: rgba(68, 219, 94, 0.5)
 }
+
 .mat-slide-toggle-thumb {
-    background-color: rgba(220,220,220,0.3);
-}
-.mat-slide-toggle-bar, .mat-slide-toggle-thumb {
-    background:rgba(220,220,220,0.9);
+    background-color: rgba(220, 220, 220, 0.3);
 }
 
+.mat-slide-toggle-bar,
+.mat-slide-toggle-thumb {
+    background: rgba(220, 220, 220, 0.9);
+}
 
-.limit-slider .carousel-control-next{
-	background-image:none;
+.limit-slider .carousel-control-next {
+    background-image: none;
 }
-.limit-slider .carousel-control-prev{
-	background-image:none;
+
+.limit-slider .carousel-control-prev {
+    background-image: none;
 }
+
 .limit-slider .carousel-indicators li {
-    background-color: rgba(239, 88, 88,1);
-	width: 12px;
+    background-color: rgba(239, 88, 88, 1);
+    width: 12px;
     height: 12px;
- margin-top: 0px;
+    margin-top: 0px;
     display: inline-block;
     margin-left: 7px;
 }
+
 .limit-slider .carousel-indicators li:active {
-	background:none;
-	border:1px solid rgba(239, 88, 88,1);
-		width: 12px;
+    background: none;
+    border: 1px solid rgba(239, 88, 88, 1);
+    width: 12px;
     height: 12px;
- margin-top: 0px;
+    margin-top: 0px;
     display: inline-block;
     margin-left: 7px;
 }
-.limit-slider .carousel-indicators{
-	left:25px;
+
+.limit-slider .carousel-indicators {
+    left: 25px;
 }
+
 .limit-slider .carousel {
     padding: 80px;
 }
+
 .card .carousel-indicators li {
     width: 12px;
     height: 12px;
-	margin-right:3px;
+    margin-right: 3px;
 }
+
 .card .carousel-indicators {
     left: 15px;
 }
+
 .card .carousel-indicators .active {
     background-color: #ef5858;
 }
 
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .limit-slider .carousel {
+        padding: 50px;
+    }
+    .limit-slider .carousel-indicators {
+        left: 14px;
+    }
+}
 
-@media only screen and (min-width: 0px) and (max-width: 576px){
-.limit-slider .carousel {
-    padding: 50px;
-}	 
-.limit-slider .carousel-indicators {
-    left: 14px;
-}	 
-	 
-	 
-}	 
+.mat-slider-horizontal .mat-slider-thumb-label {
+    top: -42px !important;
+}
