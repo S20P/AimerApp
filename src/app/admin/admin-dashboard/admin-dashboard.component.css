@@ -55,6 +55,7 @@
     margin: 0 auto;
     float: none;
     width: 100%;
+    padding: 0 20px;
 }
 
 .modal-content {
@@ -264,18 +265,6 @@ button.btn.btn-success.btn-block.btn4:hover {
     margin: 20px 0px;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 576px) {
-    .custom-buttons {
-        padding: 15px 0px;
-    }
-    .custom-buttons .btn-custom4 {
-        font-size: 24px;
-    }
-    .custom-buttons .btn-custom5 {
-        font-size: 24px;
-    }
-}
-
 .padd {
     margin: 20px 0px;
 }
@@ -302,4 +291,30 @@ button.btn.btn-success.btn-block.btn4:hover {
     line-height: 35px;
     width: 100%;
     transition: all 0.3s ease-in-out 0s;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .custom-buttons {
+        padding: 15px 0px;
+    }
+    .custom-buttons .btn-custom4 {
+        font-size: 24px;
+    }
+    .custom-buttons .btn-custom5 {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .Signout-buttons .btn-custom4 {
+        margin: 10px 0px;
+        border: 2px solid #ef5858;
+        color: #fff;
+        font-size: 16px;
+        background: transparent;
+        padding: 0px 0px 5px 0px;
+        line-height: 35px;
+        width: 100%;
+        transition: all 0.3s ease-in-out 0s;
+    }
 }
