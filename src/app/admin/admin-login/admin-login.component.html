@@ -1,0 +1,97 @@
+<div class="top-head">
+    <div class="container-fluid">
+        <div class="col-xs-4">
+            <div class="drake">
+                <!-- <a [routerLink]="['/edit-profile/']">
+            <div>
+                  <div>
+                      <img src="assets/john.jpg" class="img-circle">
+                  </div>
+             </div>
+         </a>		 -->
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon hidden-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
+            </div>
+            <div class="small-icon visible-xs">
+                <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <!-- <div class="small-icon chat hidden-xs">
+          <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
+      </div>
+      <div class="small-icon chat visible-xs">
+          <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+      </div> -->
+        </div>
+    </div>
+</div>
+
+<form #signinForm="ngForm" (ngSubmit)="submitLogin()">
+    <section class="discovery">
+        <div class="container">
+            <div class="col-sm-1 col-md-1 col-lg-3"></div>
+            <div class="col-sm-10 col-md-10 col-lg-6">
+                <h1 class="signup_title"> Signin </h1>
+                <fieldset>
+
+                    <div *ngIf="msg_error" class="errorMsg_section">
+                        <h3>{{loginMsg}}</h3>
+                    </div>
+
+                    <div class="inner-wrap">
+
+                        <!-- email  -->
+                        <div class="form-group" [ngClass]="{
+                'has-danger': email.invalid && (email.dirty || email.touched),
+                'has-success': email.valid && (email.dirty || email.touched)}">
+
+                            <label for="email"><h3>Email</h3> </label>
+                            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required #email="ngModel" placeholder="Enter Your Email">
+
+                            <div class="form-control-throw" *ngIf="email.errors && (email.dirty || email.touched)">
+                                <p *ngIf="email.errors.required" class="text-danger-throw">Email is required</p>
+                                <p *ngIf="email.errors.pattern" class="text-danger-throw">Please Enter valid Email address.</p>
+                            </div>
+                        </div>
+
+                        <!-- end email  -->
+
+                        <!-- password  -->
+                        <div class="form-group" [ngClass]="{
+                'has-danger': password.invalid && (password.dirty || password.touched),
+                'has-success': password.valid && (password.dirty || password.touched)}">
+                            <label for="password"><h3>Password</h3></label>
+                            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" required #password="ngModel" placeholder="Enter Your password">
+
+                            <div class="form-control-throw" *ngIf="password.errors && (password.dirty || password.touched)">
+                                <p *ngIf="password.errors.required" class="text-danger-throw">password is required</p>
+                            </div>
+
+                        </div>
+                        <!--end  password  -->
+
+                    </div>
+
+                </fieldset>
+                <div class="custom-buttons signup_save_btn">
+                    <button type="submit" class="btn btn-custom4" [disabled]="signinForm.invalid">Submit</button>
+                </div>
+
+                <!-- <section class="custom-buttons">
+                  <div class="container">
+                      <div class="col-sm-1 col-md-3 col-lg-3"></div>
+                        <div class="col-sm-10 col-md-6 col-lg-6">
+                        </div>	
+                      <div class="col-sm-1 col-md-3 col-lg-3"></div>
+                  </div>
+                       
+                </section> -->
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-3"></div>
+        </div>
+    </section>
+</form>

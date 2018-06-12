@@ -10,7 +10,13 @@ import { ChatComponentComponent } from './chat-component/chat-component.componen
 import { ProfileComponent } from './profile/profile.component';
 import { SetupProfileComponent } from './setup-profile/setup-profile.component';
 
+//admin Dashbord
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+
+
 const routes: Routes = [
+ 
   {
     path: '',
     component: HomeComponent
@@ -47,6 +53,14 @@ const routes: Routes = [
     path: 'setup-profile',
     component: SetupProfileComponent
   },
+  {
+    path: 'admin/lp-login',
+    component: AdminLoginComponent
+  },
+  {
+    path: 'admin/home',
+    component: AdminDashboardComponent
+  },
 ];
 
 @NgModule({
@@ -63,5 +77,7 @@ export const routingcomponent = [ HomeComponent,
                                   ChatBoxComponent,
                                   ChatComponentComponent,
                                   ProfileComponent,
-                                  SetupProfileComponent
+                                  SetupProfileComponent,
+                                  AdminDashboardComponent,
+                                  AdminLoginComponent
                                 ];

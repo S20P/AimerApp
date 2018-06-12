@@ -1,224 +1,243 @@
- 
- 
  .top-head {
-    float:left;
-    width:100%;
-    text-align:center;
-    background:#ef5858;
-    padding:0px;
-}
-.small-icon span {
-   color: #fff;
-   font-size: 80px;
-   padding-top: 20px;
-    
-}
-
-.card {
-   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
-   transition: 0.3s;
-}
-.profile{
-   float:left;
-   width:100%;
-   text-align:center;
-}
-.card:hover {
-   box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2);
-}
-.top-head .img-circle  {
-   border-radius: 50%;
-   width: 55px;
-   height: 55px;
-   object-fit: cover;
-margin-top: 10px;
-}
-.card h2,h3,h5{
-   text-align:left;
-   padding: 4px 10px;
-}
-mat-slider{
-   color:#000;
-   width:100%;
-}
-.mat-slider-horizontal .mat-slider-ticks-container {
-   background:red !important;
-}
-.inner-gender{
-   text-align:left;
-   float:left;
-   width:100%;
-}
-.inner-wrap{
-   float:left;
-   width:100%;
-   border:1px solid #ef5858;
-   padding: 30px 20px;
-   margin:10px 0px;
-}
-.discovery{
-   float:left;
-   width:100%;
-   padding:20px 0px;
-}
-.gender{
-   float:left;
-   width:100%;
-   padding:10px 0px;
-}
-.custom-buttons{
-   float:left;
-   width:100%;
-   text-align:center;
-   padding:45px 0px;
-}
-.custom-buttons .btn-custom4{
-   margin:10px 0px;
-   border:2px solid #ef5858;
-   color:#000;
-   font-size:28px;
-   background:transparent;
-   padding: 10px 0px;
-   width:100%;
-   transition: all 0.3s ease-in-out 0s;
-}
-.custom-buttons .btn-custom5{
-   margin:10px 0px;
-   border:2px solid #ef5858;
-   color:#000;
-   font-size:28px;
-   background:transparent;
-   padding: 10px 0px;
-   width:100%;
-   transition: all 0.3s ease-in-out 0s;
-}
-.btn-custom6{
-   margin-top:10px;
-   color:#fff;
-   font-size:24px;
-   background:#ef5858;
-   padding: 14px 45px;
-   border-radius: 30px;
-   transition: all 0.3s ease-in-out 0s;
-}
-.btn-custom6:hover{
-   background:#fff;
-   color:#ef5858;
-   border:2px solid #ef5858;
-}
-.custom-buttons .btn-custom5:hover{
-   background:#ef5858;
-   color:#fff;
-   border:2px solid #ef5858;
-}
-.custom-buttons .btn-custom4:hover{
-   background:#ef5858;
-   color:#fff;
-   border:2px solid #ef5858;
-}
-.top-btn{
-   float:left;
-   width:100%;
-   text-align:center;
-   position: absolute;
-   top: 20px;
-   left: 0;
-   z-index: 999;
-}
-.pos-pro{
-   position:relative;
-   float:left;
-   width:100%;
-   padding:60px 0px;
-}
+     float: left;
+     width: 100%;
+     text-align: center;
+     background: #ef5858;
+     padding: 0px;
+ }
+ 
+ .small-icon span {
+     color: #fff;
+     font-size: 80px;
+     padding-top: 20px;
+ }
+ 
+ .card {
+     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+     transition: 0.3s;
+ }
+ 
+ .profile {
+     float: left;
+     width: 100%;
+     text-align: center;
+ }
+ 
+ .card:hover {
+     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+ }
+ 
+ .top-head .img-circle {
+     border-radius: 50%;
+     width: 55px;
+     height: 55px;
+     object-fit: cover;
+     margin-top: 10px;
+ }
+ 
+ .card h2,
+ h3,
+ h5 {
+     text-align: left;
+     padding: 4px 10px;
+ }
+ 
+ mat-slider {
+     color: #000;
+     width: 100%;
+ }
+ 
+ .mat-slider-horizontal .mat-slider-ticks-container {
+     background: red !important;
+ }
+ 
+ .inner-gender {
+     text-align: left;
+     float: left;
+     width: 100%;
+ }
+ 
+ .inner-wrap {
+     float: left;
+     width: 100%;
+     border: 1px solid #ef5858;
+     padding: 30px 20px;
+     margin: 10px 0px;
+ }
+ 
+ .discovery {
+     float: left;
+     width: 100%;
+     padding: 20px 0px;
+ }
+ 
+ .gender {
+     float: left;
+     width: 100%;
+     padding: 10px 0px;
+ }
+ 
+ .custom-buttons {
+     float: left;
+     width: 100%;
+     text-align: center;
+     padding: 45px 0px;
+ }
+ 
+ .custom-buttons .btn-custom4 {
+     margin: 10px 0px;
+     border: 2px solid #ef5858;
+     color: #000;
+     font-size: 28px;
+     background: transparent;
+     padding: 10px 0px;
+     width: 100%;
+     transition: all 0.3s ease-in-out 0s;
+ }
+ 
+ .custom-buttons .btn-custom5 {
+     margin: 10px 0px;
+     border: 2px solid #ef5858;
+     color: #000;
+     font-size: 28px;
+     background: transparent;
+     padding: 10px 0px;
+     width: 100%;
+     transition: all 0.3s ease-in-out 0s;
+ }
+ 
+ .btn-custom6 {
+     margin-top: 10px;
+     color: #fff;
+     font-size: 24px;
+     background: #ef5858;
+     padding: 14px 45px;
+     border-radius: 30px;
+     transition: all 0.3s ease-in-out 0s;
+ }
+ 
+ .btn-custom6:hover {
+     background: #fff;
+     color: #ef5858;
+     border: 2px solid #ef5858;
+ }
+ 
+ .custom-buttons .btn-custom5:hover {
+     background: #ef5858;
+     color: #fff;
+     border: 2px solid #ef5858;
+ }
+ 
+ .custom-buttons .btn-custom4:hover {
+     background: #ef5858;
+     color: #fff;
+     border: 2px solid #ef5858;
+ }
+ 
+ .top-btn {
+     float: left;
+     width: 100%;
+     text-align: center;
+     position: absolute;
+     top: 20px;
+     left: 0;
+     z-index: 999;
+ }
+ 
+ .pos-pro {
+     position: relative;
+     float: left;
+     width: 100%;
+     padding: 60px 0px;
+ }
+ 
  .chat img {
-     margin-top:10px;
+     margin-top: 10px;
  }
+ 
  .aim-slider h3 span {
-   display: inline-block;
-   width: 47%;
+     display: inline-block;
+     width: 47%;
  }
-
-@media only screen and (min-width: 0px) and (max-width: 576px){
-.top-head .img-circle  {
-   width: 55px;
-   height: 55px;
-   margin-top: 5px;
-} 
-.small-icon span {
-   color: #fff;
-   font-size: 50px;
-   padding-top: 5px;	 
-}
-.btn-custom6{
-   font-size:20px;
-   background:#ef5858;
-   padding: 10px 30px;
-}
-.pos-pro{
-   padding:60px 0px 30px 0px;
-}
-.custom-buttons{
-   padding:15px 0px;
-}
-.custom-buttons .btn-custom4{
-   font-size:24px;
-}
-.custom-buttons .btn-custom5{
-   font-size:24px;
-}
-.top-head {
-   padding:0px;
-}
-}
-
-
-
-.form-control {
-    display: block;
-    width: 100%;
-    padding: 0px  10px !important;
-    font-size: 14px !important;
-    line-height: 2.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-
-.signup_title{
-    text-align: center;
-    padding: 15px;
-    border: 1px solid #efe7e7;
-    border-radius: 30px;
-}
-
-
-.text-danger-throw{
-    font-size: 13px;
-    color: red;
-}
-
-select {
-    height: 33px !important;
-}
-
-.signup_save_btn{
-    padding: 0px !important;
-}
-.signup_save_btn .btn-custom4{
-    margin: 0px !important;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 5px !important;
-    background: #ef5858;
-    color: #fff;
-    border: 2px solid #ef5858;
-}
-.signup_save_btn .btn-custom4:hover{
-background: transparent;
-color: #000;
-}
+ 
+ @media only screen and (min-width: 0px) and (max-width: 576px) {
+     .top-head .img-circle {
+         width: 55px;
+         height: 55px;
+         margin-top: 5px;
+     }
+     .small-icon span {
+         color: #fff;
+         font-size: 50px;
+         padding-top: 5px;
+     }
+     .btn-custom6 {
+         font-size: 20px;
+         background: #ef5858;
+         padding: 10px 30px;
+     }
+     .pos-pro {
+         padding: 60px 0px 30px 0px;
+     }
+     .custom-buttons {
+         padding: 15px 0px;
+     }
+     .custom-buttons .btn-custom4 {
+         font-size: 24px;
+     }
+     .custom-buttons .btn-custom5 {
+         font-size: 24px;
+     }
+     .top-head {
+         padding: 0px;
+     }
+ }
+ 
+ .form-control {
+     display: block;
+     width: 100%;
+     padding: 0px 10px !important;
+     font-size: 14px !important;
+     line-height: 2.5;
+     color: #495057;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid #ced4da;
+     border-radius: .25rem;
+     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+ }
+ 
+ .signup_title {
+     text-align: center;
+     padding: 15px;
+     border: 1px solid #efe7e7;
+     border-radius: 30px;
+ }
+ 
+ .text-danger-throw {
+     font-size: 13px;
+     color: red;
+ }
+ 
+ select {
+     height: 33px !important;
+ }
+ 
+ .signup_save_btn {
+     padding: 0px !important;
+ }
+ 
+ .signup_save_btn .btn-custom4 {
+     margin: 0px !important;
+     font-size: 18px;
+     font-weight: 600;
+     padding: 5px !important;
+     background: #ef5858;
+     color: #fff;
+     border: 2px solid #ef5858;
+ }
+ 
+ .signup_save_btn .btn-custom4:hover {
+     background: transparent;
+     color: #000;
+ }

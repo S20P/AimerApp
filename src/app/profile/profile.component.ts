@@ -136,16 +136,7 @@ export class ProfileComponent implements OnInit {
                 var avt_url = userimage[i];
                 console.log("url is:",avt_url);
                 var user_image;
-               // var Image_check = isUrlExists(avt_url);
-
-                // if (Image_check == false) {
-                //   console.log('Image does not exist');
-                //   user_image = "/assets/not_found.jpg"
-                // }
-                // else {
-                //   console.log('Image Exists');
-                //   user_image = avt_url;
-                // }
+             
                 this.imagestore.push({url:avt_url});
              }
           }

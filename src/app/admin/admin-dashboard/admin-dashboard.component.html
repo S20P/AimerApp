@@ -1,0 +1,144 @@
+<div class="top-head">
+    <div class="container-fluid">
+        <div class="col-xs-4">
+            <div class="drake">
+                <a>
+                    <div *ngFor="let img of UserProfileImage_url; let i = index">
+                        <div *ngIf="img.url==undefined;else avtar">
+                            <img src="assets/avatar_user.jpg" class="img-circle">
+                        </div>
+                        <ng-template #avtar>
+                            <img src="{{img.url}}" class="img-circle">
+                        </ng-template>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon hidden-xs">
+                <a routerLink="/admin/home"><img src="assets/small-icon.png"></a>
+            </div>
+            <div class="small-icon visible-xs">
+                <a routerLink="/admin/home"><img src="assets/small-icon-sm.png"></a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="small-icon chat hidden-xs Signout-buttons">
+                <button type="button" class="btn btn-custom4" (click)="LogoutProfile()">
+                        <i class="glyphicon glyphicon-log-out"></i> Sign-out
+                </button>
+            </div>
+            <div class="small-icon chat visible-xs Sign-out">
+                <a>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>Sign-out
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="upload-container">
+
+    <div class="container text-center ">
+        <div class="col-md-12 padd">
+            <div *ngFor="let img of imagestore; let i = index">
+                <div class="col-xs-12 col-md-4 col-lg-4">
+                    <div *ngIf="img.url==undefined;else removeimg">
+
+                        <div class="horizontal  userphotos image-wrap">
+                            <div class="vertical">
+                                <img src="assets/avatar_user.jpg">
+                            </div>
+                        </div>
+
+                    </div>
+                    <ng-template #removeimg>
+
+                        <div class="horizontal  userphotos image-wrap">
+                            <div class="vertical">
+                                <img src="{{img.url}}">
+                                <button type="button" (click)="openModal(deleteImgtemplate)"><span class="glyphicon glyphicon-remove"></span></button>
+                            </div>
+                        </div>
+
+                    </ng-template>
+                </div>
+
+
+                <ng-template #deleteImgtemplate>
+                    <div class="modal-body">
+                        <div class="modal-body text-center confirm-modal">
+                            <p>Do you want to confirm?</p>
+                            <button type="button" class="btn btn-custom2" (click)="confirm_delete_img(i)" aria-label="Close">Yes</button>
+                            <button type="button" class="btn btn-custom3" (click)="modalRef.hide()" aria-label="Close">No</button>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+
+    <div class="usermname">
+        <div class="col-md-12">
+            <h2>{{username1}},{{age}}</h2>
+        </div>
+    </div>
+    <div class="inner-wrap">
+        <div class="profile-about">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="comment">About Description</label>
+                        <textarea class="form-control" rows="5" id="comment" #userabout value="{{userAboutMe}}">{{userAboutMe}}</textarea>
+                        <button type="button" class="btn btn3" (click)="updateAbout(userabout.value)">Update About</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="profile-about">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="comment">Gender</label>
+                        <div class="gender">
+                            <h3></h3>
+                            <div class="inner-gender">
+                                <div class="col-xs-6">
+                                    <h4>Male</h4>
+                                </div>
+                                <div class="col-xs-6">
+                                    <mat-slide-toggle color="warn" [(ngModel)]="male" (change)="onChangeMale()" name="male"></mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="inner-gender">
+                                <div class="col-xs-6">
+                                    <h4>Female</h4>
+                                </div>
+                                <div class="col-xs-6">
+                                    <mat-slide-toggle color="warn" [(ngModel)]="female" (change)="onChangeFemale()" name="female"></mat-slide-toggle>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn3" (click)="updateGender()">Update Gender</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="custom-buttons">
+        <div class="container">
+            <div class="col-sm-10 col-md-6 col-lg-6">
+                <button type="submit" class="btn btn-custom4" (click)="Suspend()">Suspend</button>
+            </div>
+            <div class="col-sm-10 col-md-6 col-lg-6">
+                <button type="button" class="btn btn-custom4" (click)="Accept()">Accept</button>
+            </div>
+        </div>
+    </section>
+</div>

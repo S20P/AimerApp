@@ -27,6 +27,9 @@ import { LikeService } from './service/like/like.service';
 import { ProfileService } from './service/profile/profile.service';
 import { CurrentLocationService } from './service/current-location/current-location.service';
 
+//Admin API services
+import { AdminService } from './service/admin/admin.service';
+
 const fbLoginOptions = {
   scope: 'public_profile, email, user_birthday, user_friends',
   return_scopes: true,
@@ -51,7 +54,8 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     routingcomponent,
-     ],
+    
+         ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -78,7 +82,8 @@ export function provideConfig() {
     DiscoverCardsService,
     LikeService,
     ProfileService,
-    CurrentLocationService
+    CurrentLocationService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })
