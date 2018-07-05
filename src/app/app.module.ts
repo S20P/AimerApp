@@ -29,6 +29,7 @@ import { CurrentLocationService } from './service/current-location/current-locat
 
 //Admin API services
 import { AdminService } from './service/admin/admin.service';
+import { HeaderComponent } from './header/header.component';
 
 const fbLoginOptions = {
   scope: 'public_profile, email, user_birthday, user_friends',
@@ -54,6 +55,7 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     routingcomponent,
+    HeaderComponent,
     
          ],
   imports: [

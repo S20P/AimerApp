@@ -1,34 +1,5 @@
-<div class="top-head">
-    <div class="container-fluid">
-        <div class="col-xs-4">
-            <div class="drake">
-                <!-- <a [routerLink]="['/edit-profile/']">
-                <div>
-                      <div>
-                          <img src="assets/john.jpg" class="img-circle">
-                      </div>
-                 </div>
-             </a>		 -->
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="small-icon hidden-xs">
-                <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
-            </div>
-            <div class="small-icon visible-xs">
-                <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <!-- <div class="small-icon chat hidden-xs">
-              <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
-          </div>
-          <div class="small-icon chat visible-xs">
-              <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
-          </div> -->
-        </div>
-    </div>
-</div>
+<app-header></app-header>
+
 
 <form #setupProfileForm="ngForm" (ngSubmit)="saveProfile()">
     <section class="discovery">

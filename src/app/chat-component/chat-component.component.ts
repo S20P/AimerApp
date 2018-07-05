@@ -282,8 +282,10 @@ this.message_result = [];
 
 
   addItem() {
-  //  console.log("send-text",this.goalText);
-      
+  
+   console.log("send-text",this.goalText);
+
+
     let data = {"connectionId":this.chatId,"text":this.goalText};
     this.ConnectionApi.sendMessage(data).subscribe(res => {
     //  console.log("send-text-data",res);

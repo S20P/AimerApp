@@ -1,5 +1,5 @@
 .home-wrap {
-    padding: 35px 0 0 0;
+    /* padding: 35px 0 0 0; */
 }
 
 .headings {
@@ -7,8 +7,8 @@
 }
 
 .headings h1 {
-    font-size: 65px;
-    font-weight: 700;
+    font-size: 60px;
+    font-weight: bold;
     color: #ef5858;
 }
 
@@ -17,26 +17,27 @@
 }
 
 .logo img {
-    width: 135px;
+    width: 125px;
 }
 
 .headings h2 {
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 300;
     color: #ffffff;
 }
 
 .login-btn {
-    margin-top: 115px;
+    margin-top: 100px;
 }
 
 .login-btn .btn-custom {
     background: #2d5a94;
     color: #fff;
-    /* width: 100%; */
+    width: 80%;
     border: 2px solid #2d5a94;
-    padding: 10px 50px 20px;
+    padding: 11px 30px 15px;
     font-size: 24px;
+    margin: auto;
     display: block;
     line-height: 30px;
     border-radius: 35px;
@@ -54,7 +55,7 @@
 .home-wrap {
     background: url('../../assets/background.jpg') center no-repeat;
     background-size: cover;
-    padding: 25px 80px 150px 40px;
+    padding: 20px 20px 130px 20px;
 }
 
 .bottom-text {
@@ -72,12 +73,11 @@
     color: #ef5858;
 }
 
-.bottom-text h2 {
-    font-size: 22px;
-}
-
+/* footer {
+    padding: 5px 0 8px;
+} */
 .copy p {
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .copy {
@@ -86,7 +86,7 @@
     padding-top: 20px;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 576px) {
+/* @media only screen and (min-width: 0px) and (max-width: 576px) {
     .headings h1 {
         font-size: 50px;
     }
@@ -109,9 +109,9 @@
     .copy p {
         font-size: 12px;
     }
-}
+} */
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+/* @media only screen and (min-width: 768px) and (max-width: 991px) {
     .headings h1 {
         font-size: 50px;
     }
@@ -128,23 +128,88 @@
     .home-wrap {
         padding: 40px 0px 325px 0px;
     }
-    .bottom-text h2 {
-        font-size: 15px;
-        font-weight: 600;
+   
+} */
+
+/* @media only screen and (min-width: 1280px) {
+    .home-wrap {
+        padding: 20px 20px 130px 20px;
+    }
+} */
+@media only screen and (max-width: 1200px) and (min-width: 992px)
+{
+    .login-btn .btn-custom {
+        width: 90%;
+    }
+}
+@media (max-width: 991px) {
+    .login-btn .btn-custom {
+        width: 100%;
+        font-size: 22px;
+    }
+    .login-btn {
+        margin-top: 70px;
+    }
+    .headings h1 {
+        font-size: 52px;
+    }
+    .headings h2 {
+        font-size: 31px;
     }
     .copy p {
-        font-size: 12px;
+        font-size: 16px;
     }
 }
-
-@media only screen and (min-width: 1280px) {
-    .home-wrap {
-        padding: 25px 80px 150px 40px;
+@media (max-width: 991px) and (min-width: 767px){
+    footer h3 {
+        font-size: 15px;
     }
 }
-
-@media only screen and (min-width: 1680px) {
-    .home-wrap {
-        padding: 25px 80px 150px 40px;
+@media (max-width: 767px){
+    .home-wrap{
+        background-position: left 26% bottom 40%;
+        margin: auto;
+        display: block;
+    }
+    footer h3 {
+        font-size: 16px;
+    }
+}
+@media (max-width: 767px) and (min-width: 579px){
+    .login-btn .btn-custom {
+        width: auto;    
+    }
+}
+@media (max-width: 580px){
+    .login-btn .btn-custom {
+        width: 60% ;
+        font-size: 20px;
+        margin: auto;
+        display: block;
+        
+    }
+}
+@media (max-width: 767px) and (min-width: 576px){
+    .col-sm-3 {
+    max-width: unset;
+    }
+}
+@media (max-width: 480px){
+    .login-btn .btn-custom {
+        width: 85% ;
+        font-size: 20px;
+    }
+}
+@media (max-width: 380px){
+    .login-btn .btn-custom {
+        width: 100% ;
+        font-size: 18px;
+        padding: 7px 30px 10px;
+    }
+    .headings h1 {
+        font-size: 45px;
+    }
+    .headings h2 {
+        font-size: 28px;
     }
 }

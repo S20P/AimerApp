@@ -1,33 +1,33 @@
 @import "~nouislider/distribute/nouislider.min.css";
 .mat-slider-horizontal .mat-slider-ticks-container {
-    background: #ef5858;
+    background: #ddd;
 }
 
 .mat-slider:not(.mat-slider-disabled) .mat-slider-thumb,
 .mat-slider:not(.mat-slider-disabled) .mat-slider-thumb-label {
     border: 2px solid #ef5858;
     z-index: 9999999;
-    background: #fff;
 }
 
 .mat-slider-thumb-label {
-    width: 40px !important;
-    height: 40px !important;
+    width: 30px !important;
+    height: 30px !important;
 }
 
 .mat-slider-thumb-label-text {
-    font-size: 16px;
+    font-size: 12px;
     color: #ef5858;
 }
 
 .inner-wrap .mat-slider-thumb {
-    bottom: -12px;
-    width: 28px;
-    height: 28px;
+    bottom: -14px;
+    width: 26px;
+    height: 26px;
+    background: #ef5858;
 }
 
 .aim-slider .noUi-connect {
-    background: #ef5858;
+    background: #ddd;
 }
 
 .aim-slider .noUi-horizontal {
@@ -36,7 +36,7 @@
 }
 
 .aim-slider .noUi-connects {
-    background: #ef5858;
+    background: #ddd;
 }
 
 .aim-slider .noUi-handle:after,
@@ -51,6 +51,11 @@
     top: 6px;
 }
 
+.noUi-handle {
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
+}
+
 .aim-slider .noUi-horizontal .noUi-handle {
     border: 1px solid #ef5858;
     width: 18px;
@@ -58,6 +63,7 @@
     border-radius: 50%;
     left: -17px;
     top: -8px;
+    background: #ef5858;
 }
 
 .aim-slider .noUi-horizontal .noUi-handle:focus {
@@ -73,13 +79,13 @@
 }
 
 .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-    border: 2px solid rgba(68, 219, 94, 1);
+    border: 2px solid rgb(239, 88, 88);
     z-index: 999;
     background: #fff;
 }
 
 .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-    background-color: rgba(68, 219, 94, 0.5)
+    background-color: rgba(239, 88, 88, 0.8);
 }
 
 .mat-slide-toggle-thumb {
@@ -138,6 +144,7 @@
 
 .card .carousel-indicators .active {
     background-color: #ef5858;
+    top: 1px;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 576px) {
@@ -151,4 +158,175 @@
 
 .mat-slider-horizontal .mat-slider-thumb-label {
     top: -42px !important;
+}
+
+.mat-slider-thumb {
+    right: -2px !important;
+}
+
+
+/* header css  start */
+
+.top-head {
+    float: left;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    background: #ef5858;
+    padding: 0px;
+}
+
+.top-head .img-circle {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    margin-top: 4px;
+    border: 3px solid #ef5858;
+    border-radius: 50%
+}
+
+.top-head {
+    float: left;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    background: #ef5858;
+    padding: 0px;
+}
+
+.small-icon span {
+    color: #fff;
+    font-size: 80px;
+    padding-top: 20px;
+}
+
+.small-icon img {
+    margin: 10px;
+}
+
+.place_ico {
+    width: 55px;
+    margin-top: 15px !important;
+}
+
+.chat_ico {
+    width: 45px;
+    margin-top: 10px;
+}
+
+.drake a {
+    text-decoration: none
+}
+
+.username {
+    font-size: 22px;
+    color: #ffffff;
+    margin-left: 10px;
+    margin-top: 29px;
+}
+
+.inline {
+    float: left;
+    position: relative;
+}
+
+@media only screen and (min-width:576px) and (max-width: 768px) {
+    .top-head {
+        height: 65px;
+    }
+    .top-head .img-circle {
+        width: 80px;
+        height: 80px;
+    }
+    .small-icon img {
+        margin: 5px
+    }
+    .place_ico {
+        width: 45px;
+        margin-top: 12px !important;
+    }
+    .chat_ico {
+        width: 35px;
+    }
+    .username {
+        font-size: 20px;
+        margin-top: 18px;
+    }
+}
+
+@media only screen and (min-width:445px) and (max-width: 575px) {
+    .top-head {
+        height: 60px;
+        padding-top: 22px;
+    }
+    .top-head .img-circle {
+        width: 70px;
+        height: 70px;
+        margin-top: -15px;
+    }
+    .small-icon img {
+        margin: 5px
+    }
+    .place_ico {
+        width: 45px;
+        margin-top: 11px !important;
+    }
+    .chat_ico {
+        width: 35px;
+    }
+    .username {
+        font-size: 16px;
+        margin-top: 0px;
+    }
+    .small-icon.chat {
+        margin-top: -20px;
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .top-head {
+        height: 55px;
+        padding-top: 22px;
+    }
+    .top-head .img-circle {
+        width: 60px;
+        height: 60px;
+        margin-top: -15px;
+    }
+    .small-icon img {
+        margin: 0px
+    }
+    .place_ico {
+        width: 40px;
+        margin-top: 8px !important;
+    }
+    .chat_ico {
+        width: 30px;
+    }
+    .username {
+        display: none
+    }
+    .small-icon.chat {
+        margin-top: -18px;
+    }
+    .col-rs-6 {
+        width: 50% !important;
+    }
+}
+
+.carousel-indicators li {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.modal-dialog {
+    max-width: 420px !important;
+    margin: auto !important;
+    vertical-align: middle !important;
+    top: 15% !important;
+    padding: 15px !important;
+}
+
+.modal-title {
+    font-weight: bold;
 }

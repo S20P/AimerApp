@@ -5,6 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/Rx';
 import { Router } from '@angular/router';
+
 import {
   StackConfig,
   Stack,
@@ -186,7 +187,7 @@ export class SwipeCardsComponent{
         let _id = userdata._id;
         localStorage.setItem("_id",_id);
         for(var i=0; i<1;i++){
-          this.UserProfileImage_url.push({url:userimage[i]});
+          this.UserProfileImage_url.push({url:userimage[i],username1:userdata.username1});
        }
       }
       else{

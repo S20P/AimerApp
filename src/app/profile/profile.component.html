@@ -1,63 +1,27 @@
-<div class="top-head">
-    <div class="container-fluid">
-        <div class="col-xs-4">
-            <div class="drake">
-                <a [routerLink]="['/edit-profile/']">
-                    <div *ngFor="let img of UserProfileImage_url; let i = index">
-                        <div *ngIf="img.url==undefined;else avtar">
-                            <img src="assets/avatar_user.jpg" class="img-circle">
-                        </div>
-                        <ng-template #avtar>
-                            <img src="{{img.url}}" class="img-circle">
-                        </ng-template>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="small-icon hidden-xs">
-                <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
-            </div>
-            <div class="small-icon visible-xs">
-                <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="small-icon chat hidden-xs">
-                <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
-            </div>
-            <div class="small-icon chat visible-xs">
-                <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
-            </div>
-        </div>
-    </div>
-</div>
-
+<app-header></app-header>
 <div class="upload-container">
-    <div class="container text-center">
-        <div class="col-md-12">
-            <div *ngFor="let img of imagestore; let i = index">
-                <div class="col-xs-12 col-md-6 col-lg-6">
-                    <div *ngIf="img.url==undefined;else removeimg">
+    <div class="container text-center justify-content-center">
 
+        <div class="col-md-12 gallery_upload">
+            <div *ngFor="let img of imagestore; let i = index">
+                <div class="col-xs-4 image_group">
+                    <div *ngIf="img.url==undefined;else removeimg">
                         <!-- <div class="image-wrap userphotos">
                             <img src="assets/avatar_user.jpg">
                             <button type="button" (click)="openModal(template)"><span class="glyphicon glyphicon-plus"></span></button>
                         </div> -->
-
                         <div class="horizontal  userphotos image-wrap">
                             <div class="vertical">
                                 <img src="assets/avatar_user.jpg">
                                 <button type="button" (click)="openModal(template)"><span class="glyphicon glyphicon-plus"></span></button>
                             </div>
                         </div>
-
                     </div>
                     <ng-template #removeimg>
 
                         <div class="horizontal  userphotos image-wrap">
                             <div class="vertical">
-                                <img src="{{img.url}}">
+                                <img src="{{img.url}}" onError="this.src='assets/not_found.jpg'">
                                 <button type="button" (click)="openModal(deleteImgtemplate)"><span class="glyphicon glyphicon-remove"></span></button>
                             </div>
                         </div>
@@ -71,15 +35,16 @@
                 <ng-template #template>
                     <div class="profil-modal">
                         <div class="modal-header">
-                            <h4 class="modal-title pull-left">Upload Image</h4>
-                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                            <h2 class="modal-title pull-left">Upload Image</h2>
+                            <button type="button btn" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
 				  <span aria-hidden="true">&times;</span>
 				</button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body upload_img_body">
                             <input style="display: none" type="file" accept="image/*" (change)="onFileChanged($event)" #fileInput>
-                            <button type="button" class="btn btn-primary btn-block btn1" (click)="fileInput.click()" aria-label="Close"> Select File <span class="filename">{{uploadedFileName}}</span>
-				</button>
+                            <button type="button" class="btn btn-primary btn-block btn1" (click)="fileInput.click()" aria-label="Close"> Select File 
+                            </button>
+                            <span *ngIf="fileName" class="filename">{{uploadedFileName}}</span>
                             <button type="button" class="btn btn-success btn-block btn4" [disabled]="isdisable_upload" (click)="onUpload(i)">Upload! <i class="fa fa-spinner fa-spin" *ngIf="upload_loader"></i> </button>
                             <button type="button" class="btn btn-danger btn-block btn2" aria-label="Close" (click)="modalRef.hide()"> Cancel
 				</button>
@@ -88,15 +53,25 @@
                 </ng-template>
 
                 <ng-template #deleteImgtemplate>
-                    <div class="modal-body">
+                    <!-- <div profil-modal>
+                        <div class="modal-body">
+                            <div class="modal-body text-center confirm-modal">
+                                <p>Do you want to confirm?</p>
+                                <button type="button" class="btn btn-custom2" (click)="confirm_delete_img(i)" aria-label="Close">Yes</button>
+                                <button type="button" class="btn btn-danger btn-block btn2" (click)="modalRef.hide()" aria-label="Close">No</button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="profil-modal">
                         <div class="modal-body text-center confirm-modal">
-                            <p>Do you want to confirm?</p>
-                            <button type="button" class="btn btn-custom2" (click)="confirm_delete_img(i)" aria-label="Close">Yes</button>
-                            <button type="button" class="btn btn-custom3" (click)="modalRef.hide()" aria-label="Close">No</button>
+                            <h2>Do you want to confirm?</h2>
+                            <div class="upload_img_body">
+                                <button type="button" class="btn btn-success btn-block btn4" (click)="confirm_delete_img(i)" aria-label="Close">Yes </button>
+                                <button type="button" class="btn btn-primary btn-block btn1 noconfirm-btn" aria-label="Close" (click)="modalRef.hide()"> NO </button>
+                            </div>
                         </div>
                     </div>
                 </ng-template>
-
             </div>
         </div>
     </div>
@@ -107,9 +82,9 @@
     <div class="container">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="comment">About Description</label>
-                <textarea class="form-control" rows="5" id="comment" #userabout>{{userAboutMe}}</textarea>
-                <button type="button" class="btn btn3 pull-right" (click)="updateProfile(userabout.value)">Save</button>
+                <h2 class="about_title"> About Description</h2>
+                <textarea class="form-control" rows="5" id="comment" #userabout placeholder="Enter about user">{{userAboutMe}}</textarea>
+                <button type="button" class="btn btn-custom6  pull-right" (click)="updateProfile(userabout.value)">Save</button>
             </div>
         </div>
     </div>

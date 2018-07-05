@@ -1,0 +1,33 @@
+<div class="top-head">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-rs-6">
+                <div *ngFor="let img of UserProfileImage_url; let i = index">
+                    <div class="drake inline">
+                        <a [routerLink]="['/edit-profile/']">
+                            <div *ngIf="img.url==undefined;else avtar">
+                                <img src="assets/john.jpg" class="img-circle">
+                            </div>
+                            <ng-template #avtar>
+                                <img src="{{img.url}}" class="img-circle">
+                            </ng-template>
+                        </a>
+                    </div>
+                    <div class="inline">
+                        <h4 class="username">{{img.username1}}</h4>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-4 col-rs-6">
+                <div class="top-right-header-icon">
+                    <div class="small-icon chat">
+                        <a routerLink="/swipe-cards"><img class="place_ico" src="assets/small-icon.png"></a>
+                        <a [routerLink]="['/chatbox/']"><img class="chat_ico" src="assets/chat.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

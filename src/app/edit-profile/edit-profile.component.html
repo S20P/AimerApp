@@ -1,39 +1,156 @@
-<div *ngFor="let user of Userdetails">
-    <div class="top-head">
-        <div class="container-fluid">
-            <div class="col-xs-4">
-                <div class="drake">
-                    <a [routerLink]="['/edit-profile/']">
-                        <div *ngFor="let img of UserProfileImage_url; let i = index">
+<!-- <div class="top-head">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-rs-6">
+                <div *ngFor="let img of UserProfileImage_url; let i = index">
+                    <div class="drake inline">
+                        <a [routerLink]="['/edit-profile/']">
                             <div *ngIf="img.url==undefined;else avtar">
-                                <img src="assets/avatar_user.jpg" class="img-circle">
+                                <img src="assets/john.jpg" class="img-circle">
                             </div>
                             <ng-template #avtar>
                                 <img src="{{img.url}}" class="img-circle">
                             </ng-template>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+                    <div class="inline">
+                        <h4 class="username">{{img.username1}}</h4>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-4">
-                <div class="small-icon hidden-xs">
-                    <a routerLink="/swipe-cards"><img src="assets/small-icon.png"></a>
-                </div>
-                <div class="small-icon visible-xs">
-                    <a routerLink="/swipe-cards"><img src="assets/small-icon-sm.png"></a>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="small-icon chat hidden-xs">
-                    <a [routerLink]="['/chatbox/']"><img src="assets/chat.png"></a>
-                </div>
-                <div class="small-icon chat visible-xs">
-                    <a [routerLink]="['/chatbox/']"><img src="assets/chat-small.png"></a>
+
+
+            <div class="col-xs-4 col-rs-6">
+                <div class="top-right-header-icon">
+                    <div class="small-icon chat">
+                        <a routerLink="/swipe-cards">
+                            <img class="place_ico" src="assets/small-icon.png">
+                        </a>
+                        <a [routerLink]="['/chatbox/']">
+                            <img class="chat_ico" src="assets/chat.png">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div> -->
+<app-header></app-header>
+<div *ngFor="let user of Userdetails">
+    <!-- main content -->
     <div class="pos-pro">
+        <div class="profile">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="">
+                            <carousel id="carousel">
+                                <slide *ngFor="let image of UserProfileImage">
+                                    <!-- <img src="{{image}}" class="img-responsive"> -->
+                                    <div class="image-wrap">
+                                        <div class="vertical">
+                                            <img src="{{image}}" onError="this.src='assets/not_found.jpg'" class="img-responsive userphotos">
+                                        </div>
+                                    </div>
+                                </slide>
+                            </carousel>
+                            <h2 class="user_name_age">{{user.name}}, {{user.age}}</h2>
+                            <!-- <h3>{{user.userAboutMe}}</h3> -->
+                            <div class="">
+                                <a [routerLink]="['/profile/']" class="btn btn-custom6">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        <form #settingProfileForm="ngForm" (ngSubmit)="saveSettingProfile(settingProfileForm.value)">
+                            <section class="discovery">
+
+                                <div class="">
+                                    <h2> Discovery Settings</h2>
+                                    <div class="inner-wrap">
+                                        <h3 class="distance_title">Distance(in kms)</h3>
+                                        <mat-slider thumbLabel tickInterval="1" min="2" max="1000" value="{{searchDistance}}" name="searchDistance" [(ngModel)]="searchDistance"></mat-slider>
+                                        <div class="aim-slider">
+                                            <h3 class="distance_title">
+                                                <span class="text-left">Age</span>
+                                                <span class="text-right">{{aimrange[0]}} - {{aimrange[1]}}</span>
+                                            </h3>
+                                            <nouislider [connect]="true" [min]="18" [max]="60" [step]="1" [(ngModel)]="aimrange" name="aimrange" (ngModelChange)="onChange($event)"></nouislider>
+                                        </div>
+                                        <div class="gender row">
+                                            <div class="col-xs-12">
+                                                <h3>Gender</h3>
+                                                <div class="inner-gender ">
+                                                    <div class="col-xs-6">
+                                                        <div class="">
+                                                            <h4>Male
+                                                                <mat-slide-toggle color="warn" [(ngModel)]="male" name="male"></mat-slide-toggle>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-gender">
+                                                    <div class="col-xs-6">
+                                                        <div class="">
+                                                            <h4>Female
+                                                                <mat-slide-toggle color="warn" [(ngModel)]="female" name="female"></mat-slide-toggle>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btm-button">
+                                        <div class="line1btn col-md-12">
+                                            <button type="submit" class="btn btn-theme  save_btn">Save Settings</button>
+                                        </div>
+                                        <div class="">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 logout-btn">
+                                                <button type="button" class="btn btn-theme  logout_btn" (click)="LogoutProfile()">Logout</button>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6 deactive-btn">
+                                                <button type="button" (click)="openModal(template)" class="btn btn-theme  deactive_btn">Deactivate</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <!-- <section>
+                                <div class="line1btn">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <button type="submit" class="btn btn-theme  save_btn">Save Settings</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="btn-line2">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <button type="button" class="btn btn-theme  logout_btn" (click)="LogoutProfile()">Logout</button>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <button type="button" (click)="openModal(template)" class="btn btn-theme  deactive_btn">Deactivate</button>
+                                    </div>
+                                </div>
+
+                            </section> -->
+                        </form>
+
+                    </div>
+                    <!-- <div class="col-md-2"></div> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div class="pos-pro">
         <div class="profile">
             <div class="container">
                 <div class="top-btn">
@@ -46,7 +163,7 @@
                     <div class="card">
                         <carousel id="carousel">
                             <slide *ngFor="let image of UserProfileImage">
-                                <!-- <img src="{{image}}" class="img-responsive"> -->
+                               
                                 <div class="horizontal   image-wrap">
                                     <div class="vertical">
                                         <img src="{{image}}" class="img-responsive userphotos">
@@ -61,9 +178,9 @@
                 <div class="col-sm-2 col-md-2 col-lg-4"></div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <form #settingProfileForm="ngForm" (ngSubmit)="saveSettingProfile(settingProfileForm.value)">
+    <!-- <form #settingProfileForm="ngForm" (ngSubmit)="saveSettingProfile(settingProfileForm.value)">
         <section class="discovery">
             <div class="container">
                 <div class="col-sm-1 col-md-1 col-lg-3"></div>
@@ -73,7 +190,10 @@
                         <h3 class="distance_title">Distance(in kms)</h3>
                         <mat-slider thumbLabel tickInterval="1" min="2" max="1000" value="{{searchDistance}}" name="searchDistance" [(ngModel)]="searchDistance"></mat-slider>
                         <div class="aim-slider">
-                            <h3><span class="text-left">Age</span><span class="text-right">{{aimrange[0]}} - {{aimrange[1]}}</span></h3>
+                            <h3>
+                                <span class="text-left">Age</span>
+                                <span class="text-right">{{aimrange[0]}} - {{aimrange[1]}}</span>
+                            </h3>
                             <nouislider [connect]="true" [min]="18" [max]="60" [step]="1" [(ngModel)]="aimrange" name="aimrange" (ngModelChange)="onChange($event)"></nouislider>
                         </div>
                         <div class="gender">
@@ -124,18 +244,18 @@
                 <div class="col-sm-1 col-md-3 col-lg-3"></div>
             </div>
         </section>
-    </form>
+    </form> -->
 
 
 </div>
 
 <ng-template #template>
-    <div class="profil-modal lg">
+    <div class="profil-modal sm">
         <div class="modal-header">
             <h2 class="modal-title pull-left">Deactivate</h2>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         <div class="modal-body reason_model_body">
             <div class="reason_title">
@@ -145,16 +265,21 @@
             <ul class="reason_list">
                 <li class="reason_list_item" *ngFor="let item of DeleteReason;let i=index">
                     <div (click)="selecteReasonChange(item,i)">
-                        <strong>{{item}}</strong> <span *ngIf="reason_isSelected==i" class="reason_isSelected"><i class="fa fa-check" aria-hidden="true" ></i></span>
+                        <strong>{{item}}</strong>
+                        <span *ngIf="reason_isSelected==i" class="reason_isSelected">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </li>
             </ul>
-            <div class=" row reason_footer">
-                <div class="col-md-6">
-                    <button type="button " class="btn btn-success ok_btn" [disabled]="reason_btn_disabled " (click)="DeactiveSubmit() ">Deactivate me now <i class="fa fa-spinner fa-spin " *ngIf="upload_loader"></i> </button>
+            <div class="row reason_footer">
+                <div class="col-md-6 col-xs-6">
+                    <button type="button " class="btn  btn-success ok_btn" [disabled]="reason_btn_disabled " (click)="DeactiveSubmit() ">Deactivate
+                        <i class="fa fa-spinner fa-spin " *ngIf="upload_loader"></i>
+                    </button>
                 </div>
-                <div class="col-md-6">
-                    <button type="button " class="btn btn-danger cancel_btn" aria-label="Close" (click)="modalRef.hide()"> Cancel   </button>
+                <div class="col-md-6 col-xs-6">
+                    <button type="button " class="btn  btn-danger cancel_btn" aria-label="Close" (click)="modalRef.hide()"> Cancel </button>
                 </div>
             </div>
         </div>

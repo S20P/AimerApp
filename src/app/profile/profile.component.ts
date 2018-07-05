@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
     userAboutMe;
     upload_loader:boolean;
     uploadedFileName;
+    fileName;
     constructor(
         private modalService : BsModalService,
         private authService : AuthService,
@@ -39,10 +40,13 @@ export class ProfileComponent implements OnInit {
       }
     
        this.uploadedFileName = "";
-
+       this.fileName = false;
     }
 
     openModal(template : TemplateRef<any>) {
+       this.uploadedFileName = "";
+       this.fileName = true;
+        
         this.modalRef = this.modalService.show(template);
     }
 

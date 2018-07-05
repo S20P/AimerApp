@@ -1,34 +1,8 @@
-.top-head {
-    float: left;
-    width: 100%;
-    text-align: center;
-    background: #ef5858;
-    padding: 0px;
-}
-
-.small-icon span {
-    color: #fff;
-    font-size: 80px;
-    padding-top: 20px;
-}
-
-.top-head .img-circle {
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    object-fit: cover;
-    margin-top: 10px;
-}
-
-.chat img {
-    margin-top: 10px;
-}
-
 .image-wrap {
     position: relative;
     top: 0;
     max-width: 350px;
-    margin: 20px auto;
+    margin: 0px auto;
     float: left;
     width: 100%
 }
@@ -40,8 +14,8 @@
     background: #ef5858;
     border: 0px;
     color: #fff;
-    padding: 10px 14px 10px 16px;
-    font-size: 20px;
+    padding: 6px 9px 6px 10px;
+    font-size: 14px;
     border-radius: 50%;
 }
 
@@ -61,12 +35,22 @@
     padding: 25px;
 }
 
+.btn {
+    margin: 35px 0px!important;
+    border-radius: 30px;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease-in-out 0s;
+    padding: 8px;
+}
+
 .profil-modal .btn1 {
     font-size: 18px;
     background: #ef5858;
     color: #fff;
     transition: all 0.3s ease-in-out 0s;
     border: 2px solid #ef5858;
+    margin-bottom: 10px !important;
 }
 
 .profil-modal .btn1:hover {
@@ -81,6 +65,7 @@
     color: #fff;
     transition: all 0.3s ease-in-out 0s;
     border: 2px solid #000;
+    margin: 20px 0px;
 }
 
 .profil-modal .btn2:hover {
@@ -98,6 +83,7 @@
 }
 
 .profile-about .btn3 {
+    margin: 20px 0px;
     background: #ef5858;
     font-size: 18px;
     color: #fff;
@@ -115,9 +101,9 @@
 button.btn.btn-success.btn-block.btn4 {
     background: #28a745;
     font-size: 18px;
+    margin-top: 10px !important;
     color: #fff;
-    padding: 2px 30px;
-    margin-top: 5px;
+    margin-top: 40px !important;
     border: 2px solid #28a745;
     transition: all 0.3s ease-in-out 0s;
 }
@@ -132,12 +118,14 @@ button.btn.btn-success.btn-block.btn4:hover {
     font-weight: 400;
 }
 
+.userphotos {
+    width: 140px;
+    height: 140px;
+    float: none;
+    background: #f7f4f4;
+}
+
 @media only screen and (min-width: 0px) and (max-width: 576px) {
-    .top-head .img-circle {
-        width: 55px;
-        height: 55px;
-        margin-top: 5px;
-    }
     .small-icon span {
         color: #fff;
         font-size: 50px;
@@ -148,6 +136,15 @@ button.btn.btn-success.btn-block.btn4:hover {
         right: 2px;
         padding: 5px 8px 5px 10px;
         font-size: 13px;
+    }
+    .userphotos {
+        width: 100px;
+        height: 100px;
+        float: none;
+        background: #f7f4f4;
+    }
+    .image_group {
+        width: 115px;
     }
 }
 
@@ -173,15 +170,75 @@ button.btn.btn-success.btn-block.btn4:hover {
 }
 
 .userphotos {
-    width: 190px;
-    height: 190px;
     float: none;
     background: #f7f4f4;
 }
 
-.filename {
-    font-size: 12px;
-    margin-left: 5px;
+.image_group {
+    padding: 5px;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 480px) {}
+.filename {
+    font-size: 12px;
+    margin-left: 12px;
+    text-align: center;
+    display: block;
+    margin-bottom: -12px;
+}
+
+.upload_img_body {
+    padding: 10px 100px
+}
+
+.noconfirm-btn {
+    margin-top: -15px!important;
+}
+
+.gallery_upload {
+    top: 20px;
+}
+
+.btn-custom6 {
+    margin-top: 15px !important;
+    color: #fff;
+    font-size: 20px;
+    background: #ef5858;
+    padding: 7px 25px;
+    float: left;
+    border-radius: 30px;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease-in-out 0s;
+    border-width: 2px;
+}
+
+.btn-custom6:hover {
+    background: #fff;
+    color: #ef5858;
+    border: 2px solid #ef5858;
+}
+
+.about_title {
+    margin-bottom: 15px;
+}
+
+#comment {
+    font-size: 16px;
+    height: 80px !important;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #ebebeb;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 0;
+}
+
+@media (max-width:380px) {
+    .image_group {
+        width: 50% !important;
+    }
+    .userphotos {
+        width: 120px;
+        height: 120px;
+    }
+}

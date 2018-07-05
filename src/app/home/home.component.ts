@@ -4,7 +4,6 @@ import { MemberService } from '../service/member/member.service';
 import { ConnectionService } from '../service/connection/connection.service';
 import { ProfileService } from '../service/profile/profile.service';
 
-
 import { AuthService } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';

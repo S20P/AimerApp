@@ -1,38 +1,27 @@
-.top-head {
-    float: left;
-    width: 100%;
-    text-align: center;
-    background: #ef5858;
-    padding: 0px;
-}
-
-.small-icon span {
-    color: #fff;
-    font-size: 80px;
-    padding-top: 20px;
-}
-
-.top-head .img-circle {
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    object-fit: cover;
-    margin-top: 10px;
-}
-
-.chat img {
-    margin-top: 10px;
-}
-
 .chat-tabs h2 {
-    padding-top: 50px;
+    padding-top: 25px;
     color: #000;
     text-align: left;
+    margin-left: 15px;
 }
 
 .chat-tabs .list-group-item {
-    border: 1px solid #ef5858;
+    border-bottom: 1px solid #eee !important;
     cursor: pointer;
+    border: 0px;
+}
+
+a.list-group-item:focus,
+a.list-group-item:hover,
+button.list-group-item:focus,
+button.list-group-item:hover {
+    background-color: #f7c2c2d9;
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
+    border: 2px solid #eee;
+    width: 75px;
 }
 
 .chat-tabs {
@@ -44,38 +33,31 @@
 .chat-tabs .aim-badge {
     display: block;
     border-radius: 50%;
-    width: 30px;
+    width: 20px;
     margin: 0 auto;
     text-align: center;
-    margin-top: 40px;
-    height: 30px;
-    background: #ef5858;
+    margin-top: 50px;
+    height: 0px;
+    background: #34e034;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 576px) {
-    .top-head .img-circle {
-        width: 55px;
-        height: 55px;
-        margin-top: 5px;
-    }
-    .small-icon span {
-        color: #fff;
-        font-size: 50px;
-        padding-top: 5px;
-    }
     .chat-tabs .aim-badge {
         width: 10px;
         margin-top: 15px;
         height: 10px;
     }
     .chat-tabs h2 {
-        padding-top: 15px;
-        font-size: 14px;
+        padding-top: 20px;
+        font-size: 16px;
+    }
+    .rounded-circle {
+        width: 60px;
     }
 }
 
 .nothingCardsection {
-    padding: 40px 5px;
+    padding: 100px 5px;
     text-align: center;
     margin: auto;
     float: none;
@@ -120,3 +102,19 @@ button.aim-heart.disabled:hover {
     padding: 10px 20px;
     font-size: 18px;
 }
+
+.title_match {
+    font-size: 22px;
+    color: #000;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+@media only screen and (min-width:576px) and (max-width: 768px) {}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+@media only screen and (min-width: 992px) {}
+
+@media only screen and (min-width: 1280px) {}
