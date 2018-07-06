@@ -23,18 +23,18 @@
                         <h2>{{c.age}} , {{ c.username1}}</h2>
                     </div>
                 </div>
-                <div *ngIf="aimfullcard" class="full">
-                    <div class="aimfullwrapper"><button class="aim-fullclose" (click)="closeaimcards()"> <span class="glyphicon glyphicon-arrow-down"></span></button></div>
-
+                <div *ngIf="aimfullcard" class="full fullcard-display">
+                    <div class="aimfullwrapper">
+                        <button class="aim-fullclose" (click)="closeaimcards()"> <span class="glyphicon glyphicon-arrow-down"></span></button></div>
                     <div class="aim-image">
 
                         <carousel>
                             <slide *ngFor="let picture of c.userImage">
-                                <img src="{{ picture }}">
+                                <img class="fullcard-img" src="{{ picture }}">
                             </slide>
                         </carousel>
                     </div>
-                    <div class="aim-caption">
+                    <div class="aim-caption fullcard-aimcaption">
                         <h2> {{ c.age }} , {{ c.username1 }}</h2>
                         <h6>{{c.distance}}km away</h6>
                         <h4>i am {{c.username1}}. i live in {{c.homeTown}}</h4>

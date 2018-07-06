@@ -25,14 +25,18 @@
                     <div class="panel-body chattab-scrollbar" id="scrollbarfancy">
 
                         <ul class="chat-container" *ngFor="let msg of message_result">
-                            <li *ngIf="msg.senderId == data.targetId" class="life-container" class="chat-left">
+
+                            <li *ngIf="msg.senderId == data.targetId ;else me" class="life-container" class="chat-left">
                                 <h2><span> <img src="{{data.targetImage}}" width="35px" class="img-responsive rounded-circle"></span>
                                     <span id="msg_text">{{msg.text}}</span></h2>
                                 <p> <span id="msg_time">{{msg.time | date:'h:mm'}}</span></p>
                             </li>
-                            <li *ngIf="msg.senderId !== data.targetId" class="life-container" class="chat-right">
-                                <h2><span id="msg_time">{{msg.time | date:'h:mm'}}</span><span id="msg_text">{{msg.text}}</span></h2>
-                            </li>
+                            <ng-template #me>
+                                <li *ngIf="msg.senderId !== data.targetId" class="life-container" class="chat-right">
+                                    <h2><span id="msg_time">{{msg.time | date:'h:mm'}}</span><span id="msg_text">{{msg.text}}</span></h2>
+                                </li>
+                            </ng-template>
+
                         </ul>
 
                     </div>

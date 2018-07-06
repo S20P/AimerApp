@@ -128,7 +128,6 @@ export class ChatComponentComponent implements OnInit {
 
       }else{
         this.connection_result.push({
-        
           "targetName": conn_data[c].targetName,
           "targetImage": conn_data[c].targetImage,
           "_id": conn_data[c]._id,
@@ -144,6 +143,11 @@ export class ChatComponentComponent implements OnInit {
 
           this.to = conn_data[c].senderId;
           this.from = conn_data[c].targetId;
+
+
+          console.log("to",this.to);
+          console.log("from",this.from);
+          
 
      
  
@@ -179,7 +183,7 @@ getMessages_live(){
             let msg_time = time.getTime();
             console.log("msg_time",msg_time);
              let text = data['text'];
-             let from = data['from'];
+             let to = data['to'];
             
              this.livemsg=true;
              
@@ -188,7 +192,7 @@ getMessages_live(){
 
         this.message_result.push({
               "text":text,
-              "senderId":from,
+              "senderId":to,
               "time":msg_time
         });
 
@@ -282,47 +286,58 @@ this.message_result = [];
 
 
   addItem() {
+ 
+  // console.log("send-text",this.goalText);
   
-   console.log("send-text",this.goalText);
-
+   let data1 = {
+    "text": this.goalText,
+    "to": this.to,
+    "from":  this.from ,
+  };
 
     let data = {"connectionId":this.chatId,"text":this.goalText};
     this.ConnectionApi.sendMessage(data).subscribe(res => {
-    //  console.log("send-text-data",res);
-    });
+     console.log("send-text-data",res);
+  var  mm = res['chat'];
+     let time1 = new Date();
+     let msg_time1 = time1.getTime();
+    //  this.message_result.push({
+    //    "text":mm.text,
+    //    "senderId":mm.senderId,
+    //    "time":msg_time1
+    // });
 
     let paramdata = {"connectionId":this.chatId,"text":this.goalText};
 
-    let sendmsgdata = {
-      "text": this.goalText,
-      "to": this.to,
-      "from":  this.from ,
-    };
-    let time1 = new Date();
-    let msg_time1 = time1.getTime();
-    this.message_result.push({
-      "text":this.goalText,
-      "senderId":this.from,
-      "time":msg_time1
+  
+    // let time1 = new Date();
+    // let msg_time1 = time1.getTime();
+    // this.message_result.push({
+    //   "text":this.goalText,
+    //   "senderId":this.from,
+    //   "time":msg_time1
 });
     
+let sendmsgdata = {
+  "text": this.goalText,
+  "to": this.to,
+  "from":  this.from,
+};
 
 this.ConnectionApi.getMessages(this.chatId).subscribe(res => {
-  console.log("message-data",res);});
+ // console.log("message-data",res);
+});
 
     this.ConnectionApi.addmessgae(sendmsgdata).subscribe((data: string) => {
-      console.log("message is sent",data);
+    //  console.log("message is sent",data);
     });
-
-
-
 
     let time = new Date();
     let msg_time = time.getTime();
 
-    this.goals.push({"text":this.goalText,"time":msg_time});
-    this.goalText = '';
-    this.itemCount = this.goals.length;
+    // this.goals.push({"text":this.goalText,"senderId":this.to,"time":msg_time});
+     this.goalText = '';
+     this.itemCount = this.goals.length;
 
   }
 

@@ -140,9 +140,8 @@
 
 .chat-container li #msg_text {
     border-radius: 50px;
-    padding: 8px;
-    max-width: 77%;
-    min-width: 25%;
+    padding: 3px 15px 5px;
+    width: max-content;
     display: block;
     text-align: center;
     margin-left: 10px;

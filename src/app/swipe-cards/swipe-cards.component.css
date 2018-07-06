@@ -203,7 +203,7 @@ input {
     background: #ffffff;
     border: 1px solid #616161;
     width: 100%;
-    color: #060606;
+    color: #ffffff;
     padding: 18px 10px;
     text-align: left;
     border: 1px solid transparent;
@@ -212,15 +212,15 @@ input {
 
 .aimfullwrapper {
     width: 100%;
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 18px;
     z-index: 1;
     right: 10px;
     top: 10px;
 }
 
 .aim-fullclose {
-    padding: 5px 8px;
+    padding: 7px 9px 6px 8px;
     background: #fff;
     color: #C7433E;
     border: 2px solid #C7433E;
@@ -284,6 +284,21 @@ input {
     top: 240px;
 }
 
+.fullcard-display {
+    position: relative;
+}
+
+.fullcard-aimcaption {
+    position: absolute !important;
+    background: #00000054 !important;
+}
+
+.fullcard-display .aim-image .fullcard-img {
+    width: 375px;
+    height: 415px;
+    margin-top: 15px;
+}
+
 @media (max-width: 576px) {
     #viewport .stack {
         margin: auto;
@@ -326,6 +341,9 @@ input {
     }
     .swipe-modal .modal-content {
         left: 0px;
+    }
+    .fullcard-display .aim-image .fullcard-img {
+        width: 280px;
     }
 }
 
