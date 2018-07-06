@@ -273,6 +273,12 @@ if(like==true){
   
   this.LikeApi.userLike(data).subscribe(res => {
     console.log("like-data",res);
+    var purchase = res['info'];
+
+    if(purchase == "upgrade"){
+      console.log("use daily-limit");
+      this.showModal();
+    }
    });
 
 
@@ -290,6 +296,15 @@ if(like=="superlike"){
   
   this.LikeApi.superLike(data).subscribe(res => {
     console.log("superlike-data",res);
+    
+      var purchase = res['info'];
+
+      if(purchase == "upgrade"){
+        console.log("use daily-limit");
+        this.showModal();
+      }
+
+
    });
 }
 
@@ -306,6 +321,12 @@ if(like==false){
   
   this.LikeApi.disLike(data).subscribe(res => {
     console.log("dislike-data",res);
+    var purchase = res['info'];
+
+    if(purchase == "upgrade"){
+      console.log("use daily-limit");
+      this.showModal();
+    }
    });
 
 
