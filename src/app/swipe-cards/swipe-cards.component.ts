@@ -295,6 +295,9 @@ export class SwipeCardsComponent {
           console.log("use daily-limit");
           this.showModal();
         }
+        if (purchase == "like") {
+          this.cards.pop();
+        }
       });
 
 
@@ -318,19 +321,6 @@ export class SwipeCardsComponent {
 
       this.openModal_(template);
 
-      //let data = { "facebookId": facebookId, "userId": userId }; //superLike API data
-
-      // let data = { "userId": userId, "facebookId": facebookId, "senderName": this.senderName, "senderImage": this.senderImage };
-
-      // this.LikeApi.MessageLike(data).subscribe(res => {
-      //   console.log("superlike-data", res);
-      //   var purchase = res['info'];
-
-      //   if (purchase == "upgrade") {
-      //     console.log("use daily-limit");
-      //     this.showModal();
-      //   }
-      // });
     }
 
     if (like == false) {
@@ -352,13 +342,15 @@ export class SwipeCardsComponent {
           console.log("use daily-limit");
           this.showModal();
         }
+
+        if (purchase == "dislike") {
+          this.cards.pop();
+        }
+
       });
 
 
     }
-
-
-    let removedCard = this.cards.pop();
 
     if (cardsCount == 1) {
       this.addNewCards(this.userCoordinates);
@@ -442,17 +434,14 @@ export class SwipeCardsComponent {
 
       if (purchase == "upgrade") {
         this.messageinput = "";
-
         console.log("use daily-limit");
         this.showModal();
-        // this.cards[cardsCount - 1];
-        // this.cards.pop();
       }
       if (purchase == "success") {
-        this.messageinput = "";
-        //  this.cards[cardsCount - 1];
 
-        // this.cards.pop();
+        this.cards.pop();
+
+        this.messageinput = "";
       }
 
     });
