@@ -23,6 +23,7 @@
         "@angular/platform-browser": "^5.2.0",
         "@angular/platform-browser-dynamic": "^5.2.0",
         "@angular/router": "^5.2.0",
+        "@nomadreservations/ngx-stripe": "^1.0.1",
         "angular2-swing": "^0.14.0",
         "angular4-carousel": "^3.1.8",
         "angularx-social-login": "^1.1.8",
@@ -34,7 +35,9 @@
         "ngx-bootstrap": "^2.0.2",
         "ngx-countdown": "^2.0.4",
         "ngx-fancy-preloader": "0.0.7",
+        "ngx-stripe": "^6.0.0-rc.0",
         "nouislider": "^11.0.3",
+        "react-stripe-elements": "^2.0.0",
         "rxjs": "^5.5.6",
         "socket.io-client": "^2.1.1",
         "zone.js": "^0.8.19"

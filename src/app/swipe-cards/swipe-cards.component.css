@@ -18,7 +18,7 @@ code {
     outline: none;
     font: inherit;
     border: none;
-    background: #FDE991;
+    /* background: #FDE991; */
     padding: 0;
 }
 
@@ -125,7 +125,7 @@ input {
 
 .icons .aim-star {
     color: #fff;
-    background: #2a76f7;
+    background: #ffc107;
     font-size: 60px;
     margin: 0px 10px;
     padding: 5px 15px 5px 13px;
@@ -136,7 +136,7 @@ input {
 }
 
 .icons .aim-star:hover {
-    color: #2a76f7;
+    color: #ffc107;
     background: #fff;
 }
 
@@ -555,7 +555,7 @@ button.aim-remove.disabled:hover {
 }
 
 button.aim-star.disabled:hover {
-    background: #2a76f7 !important;
+    background: #ffc107 !important;
     color: #ffffff!important;
 }
 
@@ -580,3 +580,84 @@ button.aim-heart.disabled:hover {
 section.discovery {
     padding: 150px 48px 100px;
 }
+
+
+/* Reason Model css */
+
+.mesage-title {
+    color: #ef5858;
+}
+
+.modal-body.reason_model_body {
+    padding: 15px;
+}
+
+.reason_title h4 {
+    color: #ef5858;
+    padding: 5px;
+}
+
+.reason_list {
+    list-style-type: none;
+    padding: 0;
+    cursor: default;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.reason_list li {
+    margin: 0;
+    padding: 10px;
+}
+
+.reason_list strong {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.reason_list_item {
+    border-bottom: 1px solid #eee;
+}
+
+.reason_isSelected {
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.reason_footer .btn {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px 0px;
+    color: #fff;
+    border-radius: 30px;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+#message_input {
+    width: 100%!important;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+    font-size: 16px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+#message_input::placeholder {
+    color: #000;
+}
+
+#heder_btm_border {
+    border-color: #dc3545;
+}
+
+
+/* Reason Model css end*/

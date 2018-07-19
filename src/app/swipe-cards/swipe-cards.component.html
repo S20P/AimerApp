@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="col-md-12">
                     <button (click)="voteUp(false)" class="aim-remove"><span class="glyphicon glyphicon-remove "></span></button>
-                    <button class="aim-star" (click)="voteUp('superlike')"><span class="glyphicon glyphicon-star "></span></button>
+                    <button class="aim-star" (click)="voteUp('superlike',template)"><span class="glyphicon glyphicon-envelope"></span></button>
                     <button (click)="voteUp(true)" class="aim-heart"><span class="glyphicon glyphicon-heart "></span></button>
                 </div>
             </div>
@@ -70,7 +70,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 
@@ -92,7 +91,7 @@
 
                     <div class="icons disabled_icon">
                         <button class="aim-remove disabled"><span class="glyphicon glyphicon-remove "></span></button>
-                        <button class="aim-star disabled"><span class="glyphicon glyphicon-star "></span></button>
+                        <button class="aim-star disabled"><span class="glyphicon glyphicon-envelope "></span></button>
                         <button class="aim-heart disabled"><span class="glyphicon glyphicon-heart "></span></button>
                     </div>
                 </div>
@@ -102,4 +101,37 @@
     </section>
 
 
+</ng-template>
+
+
+
+
+
+<ng-template #template>
+    <div class="profil-modal sm">
+        <div class="modal-header" id="heder_btm_border">
+            <h3 class="modal-title pull-left mesage-title">Send Message to {{goMessageName}}</h3>
+        </div>
+        <div class="modal-body reason_model_body">
+
+            <form #chatForm="ngForm" novalidate>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input id="message_input" type="text" autocomplete="off" class="form-control input_msg" name="item" placeholder="Type something here" [(ngModel)]="messageinput" required="required">
+                    </div>
+                </div>
+
+                <div class="row reason_footer">
+                    <div class="col-md-6 col-xs-6">
+                        <button type="submit" class="btn  btn-success ok_btn" [disabled]="!chatForm.valid" (click)="SendLikeMessage(messageinput)">Send
+                        <i class="fa fa-spinner fa-spin " *ngIf="upload_loader"></i>
+                    </button>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        <button type="button" class="btn  btn-danger cancel_btn" aria-label="Close" (click)="modalRef.hide()"> Cancel </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </ng-template>

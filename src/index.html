@@ -44,7 +44,8 @@
             text-align: center;
         }
     </style>
-
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="/assets/js/jquery-1.7.1.min.js"></script>
 </head>
 
 <body onload="myFunction()">
@@ -61,20 +62,25 @@
     </div>
     <script>
         function myFunction() {
-
-
             setTimeout(function() {
-
                 document.getElementById('preloader').style.display = 'none';
                 document.getElementById('app-wrapper').style.display = 'block';
-
             }, 0);
             // 3000
-
         }
     </script>
-    <script src="/assets/js/jquery-1.7.1.min.js"></script>
+
     <!-- <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
+
+
+
+    <!-- Integrating Stripe in Angular With Stripe Elements -->
+
+    <!-- <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+        var stripe = Stripe('pk_test_vOrfJXKetGYzsLXxHBSJSgRG'); // use your test publishable key
+        var elements = stripe.elements();
+    </script> -->
 
 </body>
 

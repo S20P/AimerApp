@@ -1,0 +1,20 @@
+<!-- <form novalidate (ngSubmit)="buy($event)">
+    <label for="card-element">
+      Credit or debit card
+    </label>
+    <div id="card-element" class="field"></div>
+    <button type="submit" name="btnSubmit">
+    BUY
+  </button>
+
+</form> -->
+
+
+<form action="your-server-side-code" method="POST">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_vOrfJXKetGYzsLXxHBSJSgRG" data-amount="99" data-name="Tupple Apps" data-description="Widget" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto" data-zip-code="true">
+    </script>
+</form>
+
+
+<button id="customButton" (click)="pay()">Purchase</button>
